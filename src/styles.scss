@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./StylesVars.scss";
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+mat-toolbar {
+  background-color: $primary-color;
+}
+.withoutBackgroundColor {
+  background-color: transparent;
+}
