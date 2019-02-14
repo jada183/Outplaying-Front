@@ -6,6 +6,7 @@ import { SharedModule } from '../shared-module/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { APP_ROUTING } from '../app.routes';
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { APP_ROUTING } from '../app.routes';
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
+    MatSidenavModule,
     APP_ROUTING
   ],
   declarations: [HeaderComponent],

@@ -7,6 +7,8 @@ import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header/header.module';
 import { SharedModule } from './shared-module/shared.module';
+import { NewsModule } from './news/news.module';
+import { HomeModule } from './home/home.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,6 +19,8 @@ import { SharedModule } from './shared-module/shared.module';
     APP_ROUTING,
     BrowserAnimationsModule,
     HeaderModule,
+    NewsModule,
+    HomeModule,
     SharedModule
   ],
   providers: [],

@@ -1,8 +1,20 @@
 <mat-toolbar class="example-header">
-  <button mat-icon-button class="withoutBackgroundColor">
-      <mat-icon aria-label="icon with hamburguer menu">menu</mat-icon>
-  </button>
+  <span class="textTitle">Logo place......</span>
+  <div class="menuheaderContent">
+    <a [routerLink]="['/home']">
+      <button mat-button class="withoutBackgroundColor">
+        Inicio
+      </button>
+    </a>
+    <a [routerLink]="['/noticias']">
+      <button mat-button class="withoutBackgroundColor">
+        Noticias
+      </button>
+    </a>
+  </div>
+  <div class="flex-spacer">
+  </div>
+  <div>
+    <span>Login</span>
+  </div>
 </mat-toolbar>
-<div>
-    <router-outlet></router-outlet>
-</div>

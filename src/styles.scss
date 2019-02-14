@@ -5,7 +5,11 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 mat-toolbar {
   background-color: $primary-color;
+  height: 72px!important;
 }
 .withoutBackgroundColor {
   background-color: transparent;
+}
+.content-main {
+  margin: 5%;
 }

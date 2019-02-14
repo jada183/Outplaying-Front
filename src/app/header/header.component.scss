@@ -1,4 +1,28 @@
-@import "../../stylesVars.scss";
-mat-icon{
-  color: white
+@import '../../stylesVars.scss';
+.textTitle {
+  color: $secondary-color;
+  font-weight: bold;
+}
+.menuheaderContent {
+  margin-left: 10%;
+  margin-right: 10%;
+  height: inherit;
+}
+button {
+  height:inherit;
+  font-size: 18px;
+  color: $primary-color-font;
+  font-weight: bold;
+  padding-left:10%;
+  padding-right: 10%;
+}
+button:hover {
+  background-color: $secondary-color!important;
+}
+a {
+  height:inherit;
+}
+
+.flex-spacer {
+  flex-grow: 1;
 }
