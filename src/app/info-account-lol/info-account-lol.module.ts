@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InfoAccountLolComponent } from './info-account-lol.component';
 import { LolDataService } from '../services/lol-data.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatInputModule, MatIconModule, FormsModule, ReactiveFormsModule],
   declarations: [InfoAccountLolComponent],
-  providers: [ LolDataService ],
+  providers: [LolDataService],
   exports: [InfoAccountLolComponent]
 })
 export class InfoAccountLolModule {}

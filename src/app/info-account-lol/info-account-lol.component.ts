@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LolDataService } from '../services/lol-data.service';
+import { DataAcount } from '../model_lol/data-acount';
+import { Match } from '../model_lol/match';
 
 @Component({
   selector: 'app-info-account-lol',
@@ -8,11 +10,19 @@ import { LolDataService } from '../services/lol-data.service';
 })
 export class InfoAccountLolComponent implements OnInit {
   constructor(private lolDataService: LolDataService) {}
-  acountname: string;
+  acountName: string;
+  dataAccount: DataAcount;
+  matches: Match[];
   ngOnInit() {
-    this.acountname = 'blade183';
-    this.lolDataService.getAcountData(this.acountname).subscribe(data => {
-      console.log(data);
-    });
+  }
+  searchDataAccount() {
+    this.lolDataService.getAcountData(this.acountName).subscribe(data => {
+      this.dataAccount = data;
+      this.lolDataService.getMatchData(this.dataAccount.accountId).subscribe(matchInfo => {
+      this.matches = matchInfo.matches;
+      console.log(this.matches);
+      });
+    }
+  );
   }
 }

@@ -1,3 +1,9 @@
-<p>
-  info-account-lol works!
-</p>
+<div class="row">
+  <mat-form-field class="search-form-field offset-md-3 col-md-5">
+      <input matInput type="text" placeholder="Nombre de invocador" [(ngModel)]="acountName">
+      <button mat-button *ngIf="acountName" matSuffix mat-icon-button aria-label="Clear" (click)="acountName=''">
+        <mat-icon>close</mat-icon>
+      </button>
+  </mat-form-field>
+  <button class="searchButton" mat-fab (click)="searchDataAccount()">Buscar</button>
+</div>

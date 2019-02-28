@@ -10,7 +10,6 @@ import { SharedModule } from './shared-module/shared.module';
 import { NewsModule } from './news/news.module';
 import { HomeModule } from './home/home.module';
 import { InfoAccountLolModule } from './info-account-lol/info-account-lol.module';
-
 @NgModule({
   declarations: [
     AppComponent
