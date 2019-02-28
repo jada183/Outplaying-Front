@@ -10,15 +10,17 @@
       <button mat-button class="withoutBackgroundColor">
         Noticias
       </button>
-  </a>
+    </a>
+    <a [routerLink]="['/cuenta-lol']">
+      <button mat-button class="withoutBackgroundColor">
+        Estadisticas lol
+      </button>
+    </a>
   </div>
-  <div class="flex-spacer">
-  </div>
+  <div class="flex-spacer"></div>
   <div>
-  <a [routerLink]="['/login']">
-    <button mat-button class="withoutBackgroundColor">Login
-
-    </button>
+    <a [routerLink]="['/login']">
+      <button mat-button class="withoutBackgroundColor">Login</button>
     </a>
   </div>
 </mat-toolbar>

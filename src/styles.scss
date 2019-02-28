@@ -1,15 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./StylesVars.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 mat-toolbar {
-  background-color: $primary-color;
+  background-color: $primary-color-dark!important;
   height: 72px!important;
 }
 .withoutBackgroundColor {
   background-color: transparent;
 }
 .content-main {
-  margin: 5%;
+  margin: 1%;
 }

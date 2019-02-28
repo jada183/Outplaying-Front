@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NasaDataService } from '../services/nasa-data.service';
+import { Apod } from '../models_nasa/Apod';
 
 @Component({
   selector: 'app-news',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _nasaDataService: NasaDataService) { }
+  apod: Apod;
 
   ngOnInit() {
+    this._nasaDataService.apod().subscribe(data => {
+      console.log(data);
+     this.apod = data;
+    });
   }
 
 }
