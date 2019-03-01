@@ -14,8 +14,10 @@ export class InfoAccountLolComponent implements OnInit {
   dataAccount: DataAcount;
   matches: Match[];
   ngOnInit() {
+    this.matches = new Array<Match>();
   }
   searchDataAccount() {
+    console.log('clico en buscar');
     this.lolDataService.getAcountData(this.acountName).subscribe(data => {
       this.dataAccount = data;
       this.lolDataService.getMatchData(this.dataAccount.accountId).subscribe(matchInfo => {
@@ -24,5 +26,9 @@ export class InfoAccountLolComponent implements OnInit {
       });
     }
   );
+  }
+  clearValue() {
+    this.acountName = '';
+    this.matches =  new Array<Match>();
   }
 }

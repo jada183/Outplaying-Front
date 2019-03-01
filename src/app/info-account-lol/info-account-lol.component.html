@@ -1,9 +1,38 @@
-<div class="row">
-  <mat-form-field class="search-form-field offset-md-3 col-md-5">
-      <input matInput type="text" placeholder="Nombre de invocador" [(ngModel)]="acountName">
-      <button mat-button *ngIf="acountName" matSuffix mat-icon-button aria-label="Clear" (click)="acountName=''">
-        <mat-icon>close</mat-icon>
+<mat-tab-group class="lolTab">
+  <mat-tab label="Buscar invocador">
+    <div class="row content">
+      <mat-form-field class="search-form-field offset-md-3 col-md-5">
+        <input
+          matInput
+          type="text"
+          placeholder="Nombre de invocador"
+          [(ngModel)]="acountName"
+        />
+        <button
+          mat-button
+          *ngIf="acountName"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearValue()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <button class="searchButton" mat-fab (click)="searchDataAccount()">
+        Buscar
       </button>
-  </mat-form-field>
-  <button class="searchButton" mat-fab (click)="searchDataAccount()">Buscar</button>
-</div>
+    </div>
+    <div class="row no-margin" *ngIf="matches.length > 0">
+      <div
+        class="resultSearch offset-md-3 col-md-4"
+        *ngFor="let match of matches"
+      >
+        <span>{{ match.lane }}</span>
+        <span>{{ match.champion }}</span>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Rotación de campeones">Hola</mat-tab>
+  <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group>
