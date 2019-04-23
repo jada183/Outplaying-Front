@@ -18,14 +18,6 @@ export class InfoAccountLolComponent implements OnInit {
   }
   searchDataAccount() {
     console.log('clico en buscar');
-    this.lolDataService.getAcountData(this.acountName).subscribe(data => {
-      this.dataAccount = data;
-      this.lolDataService.getMatchData(this.dataAccount.accountId).subscribe(matchInfo => {
-      this.matches = matchInfo.matches;
-      console.log(this.matches);
-      });
-    }
-  );
   }
   clearValue() {
     this.acountName = '';
