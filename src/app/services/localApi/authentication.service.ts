@@ -18,6 +18,6 @@ export class AuthenticationService {
       null,
       { username: credentials.username, password: credentials.password }
     );
-    return this.linkerService.postModel(genericRequest);
+    return this.linkerService.postModelAuthentication(genericRequest);
   }
 }

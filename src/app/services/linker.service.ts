@@ -32,6 +32,19 @@ export class LinkerService {
         headers: new HttpHeaders({
           Authorization: `${this.token}`
         }),
+        observe: 'body',
+        params: this.getParams(genericRequest.getParams())
+      }
+    );
+  }
+  postModelAuthentication(genericRequest: GenericRequest): Observable<Object> {
+    return this.http.post<Object>(
+      this.getEndPointUrl(genericRequest.getService()),
+      genericRequest.getData(),
+      {
+        headers: new HttpHeaders({
+          Authorization: `${this.token}`
+        }),
         observe: 'response',
         params: this.getParams(genericRequest.getParams())
       }
