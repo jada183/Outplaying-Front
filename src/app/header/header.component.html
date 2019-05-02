@@ -1,7 +1,7 @@
 <mat-toolbar class="example-header">
   <span class="textTitle">Logo place......</span>
   <div class="menuheaderContent">
-    <a [routerLink]="['/home']">
+    <a [routerLink]="['/home']" *ngIf ="logIn">
       <button mat-button class="withoutBackgroundColor">
         Inicio
       </button>
@@ -18,9 +18,14 @@
     </a>
   </div>
   <div class="flex-spacer"></div>
-  <div>
+  <div *ngIf ="!logIn">
     <a [routerLink]="['/login']">
-      <button mat-button class="withoutBackgroundColor">Login</button>
+      <button mat-button class="withoutBackgroundColor">LogIn</button>
+    </a>
+  </div>
+  <div *ngIf ="logIn">
+    <a>
+      <button mat-button class="withoutBackgroundColor" (click) ="logOut()" >LogOut</button>
     </a>
   </div>
 </mat-toolbar>

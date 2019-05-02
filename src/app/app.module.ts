@@ -10,6 +10,11 @@ import { SharedModule } from './shared-module/shared.module';
 import { NewsModule } from './news/news.module';
 import { HomeModule } from './home/home.module';
 import { InfoAccountLolModule } from './info-account-lol/info-account-lol.module';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +28,14 @@ import { InfoAccountLolModule } from './info-account-lol/info-account-lol.module
     NewsModule,
     HomeModule,
     InfoAccountLolModule,
-    SharedModule
+    SharedModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['example.com'],
+        blacklistedRoutes: ['example.com/examplebadroute/']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
