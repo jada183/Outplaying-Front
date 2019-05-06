@@ -1,6 +1,6 @@
 <div class="content row">
   <div class="offset-md-4 col-md-3">
-    <div class="alert alert-danger" [hidden]="!error">
+    <!-- <div class="alert alert-danger" [hidden]="!error">
       There was a problem logging in. Please try again.
     </div>
     <form role="form" (submit)="login()">
@@ -26,5 +26,50 @@
       </div>
       <button type="submit" class="btn btn-primary">LogIn</button>
     </form>
+  -->
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="form">
+          <table class="full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="full-width">
+                  <input
+                    matInput
+                    placeholder="Nombre de usuario"
+                    [(ngModel)]="credentials.username"
+                    name="username"
+                    required
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field class="full-width">
+                  <input
+                    matInput
+                    type="password"
+                    placeholder="Contraseña"
+                    [(ngModel)]="credentials.password"
+                    name="password"
+                    required
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="login()" color="primary">
+          Login
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
