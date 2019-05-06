@@ -6,6 +6,7 @@ import { LinkerService } from '../services/linker.service';
 import { StorageAppService } from '../services/storage-app.service';
 import { EventEmitter } from 'events';
 import { SharedService } from '../services/shared.service';
+import { UserService } from '../services/localApi/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private linker: LinkerService,
     private storage: StorageAppService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {}
@@ -27,7 +29,11 @@ export class LoginComponent implements OnInit {
       const token  = resp.headers.get('Authorization').split('Bearer');
       this.storage.guardarValor('token', token[1] );
       this.sharedService.emitChange('true');
-      this.router.navigate(['/noticias']);
+      const idUser = resp.headers.get('idUSer');
+      this.userService.getUserById(idUser).subscribe(response => {
+        this.userService.setUserAuthenticated(response);
+        this.router.navigate(['/noticias']);
+      });
     });
 
     return false;

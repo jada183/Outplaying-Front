@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpResponse
+} from '@angular/common/http';
 import { GenericRequest } from '../model/generic-model-request';
 import { Observable } from 'rxjs';
 import { isObject } from 'util';
@@ -47,6 +52,18 @@ export class LinkerService {
         }),
         observe: 'response',
         params: this.getParams(genericRequest.getParams())
+      }
+    );
+  }
+  getModel(genericRequest: GenericRequest): Observable<Object> {
+    return this.http.get<Object>(
+      this.getEndPointUrl(genericRequest.getService()),
+      {
+        headers: new HttpHeaders({
+          Authorization: `${this.token}`
+        }),
+        observe: 'body',
+        params: this.getParams(genericRequest.getParams)
       }
     );
   }
