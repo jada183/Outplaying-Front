@@ -1,31 +1,84 @@
 <mat-toolbar class="example-header">
   <span class="textTitle">Logo place......</span>
   <div class="menuheaderContent">
-    <a [routerLink]="['/home']" *ngIf ="logIn">
-      <button mat-button class="withoutBackgroundColor">
+    <a [routerLink]="['/home']">
+      <button
+        mat-button
+        class="withoutBackgroundColor"
+        [ngClass]="{ currentplacebutton: currentURL === 'home' }"
+      >
         Inicio
       </button>
     </a>
     <a [routerLink]="['/noticias']">
-      <button mat-button class="withoutBackgroundColor">
+      <button
+        mat-button
+        class="withoutBackgroundColor"
+        [ngClass]="{ currentplacebutton: currentURL === 'noticias' }"
+      >
         Noticias
       </button>
     </a>
     <a [routerLink]="['/cuenta-lol']">
-      <button mat-button class="withoutBackgroundColor">
-       league of legends
+      <button
+        mat-button
+        class="withoutBackgroundColor"
+        [ngClass]="{ currentplacebutton: currentURL === 'cuenta-lol' }"
+      >
+        league of legends
       </button>
     </a>
   </div>
   <div class="flex-spacer"></div>
-  <div *ngIf ="!logIn">
+  <div *ngIf="!logIn">
     <a [routerLink]="['/login']">
-      <button mat-button class="withoutBackgroundColor">LogIn</button>
+      <button
+        mat-button
+        class="withoutBackgroundColor"
+        [ngClass]="{ currentplacebutton: currentURL === 'login' }"
+      >
+        LogIn
+      </button>
     </a>
   </div>
-  <div *ngIf ="logIn">
-    <a>
-      <button mat-button class="withoutBackgroundColor" (click) ="logOut()" >LogOut</button>
-    </a>
+  <div *ngIf="logIn">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="accountButton">
+      <mat-icon class="menu">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <a
+        class="nav-link button"
+        [routerLink]="['/perfil']"
+        class="fullancholink"
+      >
+        <button
+          mat-menu-item
+          class="menuAccountButton"
+          [ngClass]="{ currentplacebutton: currentURL === 'perfil' }"
+        >
+          <mat-icon class="menu">account_box</mat-icon>
+          Mi perfil
+        </button>
+      </a>
+      <a
+        class="nav-link button"
+        [routerLink]="['/misPost']"
+        class="fullancholink"
+      >
+        <button
+          mat-menu-item
+          class="menuAccountButton"
+          [ngClass]="{ currentplacebutton: currentURL === 'misPost' }"
+        >
+          <mat-icon class="menu">assignment</mat-icon>
+          Mis publicaciones
+        </button>
+      </a>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logOut()" class="menuAccountButton">
+        <mat-icon class="menu">exit_to_app</mat-icon>
+        Cerrar sesion
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>

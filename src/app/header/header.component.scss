@@ -8,7 +8,7 @@
   margin-right: 10%;
   height: inherit;
 }
-button {
+.withoutBackgroundColor {
   height:inherit;
   font-size: 18px;
   color: $primary-color-font;
@@ -16,7 +16,7 @@ button {
   padding-left:10%;
   padding-right: 10%;
 }
-button:hover {
+.withoutBackgroundColor:hover {
   background-color: $secondary-color!important;
 }
 a {
@@ -26,4 +26,23 @@ a {
 .flex-spacer {
   flex-grow: 1;
 }
+.accountButton {
+  color: $primary-color-font;
+}
+.accountButton:hover {
+  background-color: $secondary-color!important;
+}
 
+.menuAccountButton {
+  width: 100%;
+}
+a.fullancholink {
+  text-decoration: none;
+}
+.fullancholink {
+  width:100%;
+}
+
+.currentplacebutton {
+  background-color: orange;
+}

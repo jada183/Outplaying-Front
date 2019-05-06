@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { APP_ROUTING } from '../app.routes';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +17,7 @@ import { APP_ROUTING } from '../app.routes';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
+    MatDividerModule,
     APP_ROUTING
   ],
   declarations: [HeaderComponent],
