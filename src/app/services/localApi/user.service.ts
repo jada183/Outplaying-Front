@@ -14,7 +14,7 @@ export class UserService {
   getUserById(idUser: any): Observable<any> {
     this.idUser = idUser;
     const genericRequest = new GenericRequest(
-      Object.assign(`api/v1/users/${idUser}`, {})
+      Object.assign(`users/${idUser}`, {})
     );
     return this.linkerService.getModel(genericRequest);
   }

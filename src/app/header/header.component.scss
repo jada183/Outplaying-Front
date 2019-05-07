@@ -35,6 +35,11 @@ a {
 
 .menuAccountButton {
   width: 100%;
+  background-color: $primary-color-dark!important;
+  color: $primary-color-font;
+  mat-icon {
+    color: $primary-color-font;
+  }
 }
 a.fullancholink {
   text-decoration: none;
