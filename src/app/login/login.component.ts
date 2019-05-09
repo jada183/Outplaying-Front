@@ -30,10 +30,15 @@ export class LoginComponent implements OnInit {
       this.storage.guardarValor('token', token[1] );
       this.sharedService.emitChange('true');
       const idUser = resp.headers.get('idUSer');
+      this.storage.guardarValor('idUser', idUser);
+      this.router.navigate(['/noticias']);
+      /**
       this.userService.getUserById(idUser).subscribe(response => {
         this.userService.setUserAuthenticated(response);
         this.router.navigate(['/noticias']);
-      });
+      }
+    );*/
+
     }, () => {
       // to change
       alert('Invalid credentials');

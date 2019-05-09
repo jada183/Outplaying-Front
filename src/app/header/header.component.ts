@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
   logOut() {
     this.storageAppService.eliminarValor('token');
-    this.userService.setUserAuthenticated(null);
+    this.storageAppService.eliminarValor('idUser');
     // this.currentURL = 'noticias';
     this.router.navigate(['/noticias']);
     this.sharedService.emitChange('false');

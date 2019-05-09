@@ -1,3 +1,55 @@
-<p>
-  profile works!
-</p>
+<div class="content row">
+  <div class="offset-md-4 col-md-4">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Datos personales</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <img
+        src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+        class="example-header-image"
+      />
+      <mat-card-content>
+        <!--To add-->
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Nombre"
+            [(ngModel)]="user.name"
+            name="name"
+            required
+          />
+          <mat-icon matSuffix color="primary">person</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Apellidos"
+            [(ngModel)]="user.surname"
+            name="surname"
+            required
+          />
+          <mat-icon matSuffix color="primary">person</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Correo electronico"
+            [(ngModel)]="user.email"
+            name="email"
+            required
+          />
+          <mat-icon matSuffix color="primary">mail</mat-icon>
+        </mat-form-field>
+        <mat-spinner
+          [style.display]="showSpinner ? 'block' : 'none'"
+        ></mat-spinner>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="saveData()" color="primary">
+          Guardar datos
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

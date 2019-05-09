@@ -18,10 +18,4 @@ export class UserService {
     );
     return this.linkerService.getModel(genericRequest);
   }
-  getUserAuthenticated(): User {
-    return this.userAuthenticated;
-  }
-  setUserAuthenticated(user: any) {
-    this.userAuthenticated = user;
-  }
 }
