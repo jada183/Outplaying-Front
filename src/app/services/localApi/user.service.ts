@@ -18,4 +18,10 @@ export class UserService {
     );
     return this.linkerService.getModel(genericRequest);
   }
+  updateUser(user: any): Observable<any> {
+    const genericRequest = new GenericRequest(
+      Object.assign(`users`, {}), null, user
+    );
+    return this.linkerService.putModel(genericRequest);
+  }
 }

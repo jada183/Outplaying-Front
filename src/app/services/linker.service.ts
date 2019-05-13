@@ -8,16 +8,18 @@ import {
 import { GenericRequest } from '../model/generic-model-request';
 import { Observable } from 'rxjs';
 import { isObject } from 'util';
+import { StorageAppService } from './storage-app.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LinkerService {
   private token: string;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private storage: StorageAppService) {}
 
   getToken(): string {
-    return this.token;
+    return this.storage.obtenerValor('token');
   }
 
   setToken(token: string): void {
@@ -35,7 +37,7 @@ export class LinkerService {
       genericRequest.getData(),
       {
         headers: new HttpHeaders({
-          Authorization: `${this.token}`
+          'Authorization': 'Bearer ' +  this.getToken(),
         }),
         observe: 'body',
         params: this.getParams(genericRequest.getParams())
@@ -60,10 +62,24 @@ export class LinkerService {
       this.getEndPointUrl(genericRequest.getService()),
       {
         headers: new HttpHeaders({
-          Authorization: `${this.token}`
+          'Authorization': 'Bearer ' +  this.getToken(),
         }),
         observe: 'body',
         params: this.getParams(genericRequest.getParams)
+      }
+    );
+  }
+  putModel(genericRequest: GenericRequest): Observable<Object> {
+    return this.http.put(
+      this.getEndPointUrl(genericRequest.getService()),
+      genericRequest.getData(),
+      {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' +  this.getToken(),
+          'Content-Type': `application/json`
+        }),
+        observe: 'body',
+        params: this.getParams(genericRequest.getParams()),
       }
     );
   }

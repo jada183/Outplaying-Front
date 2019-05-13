@@ -10,7 +10,7 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  user: User;
   profileForm = new FormGroup({
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
@@ -31,5 +31,10 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.profileForm.value);
+    this.userService.updateUser(this.profileForm.value).subscribe( result => {
+      this.profileForm.setValue(result);
+      // to do ventana emergente de confirmacion de actualizacion
+    });
   }
 }
