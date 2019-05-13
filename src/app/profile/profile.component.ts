@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService } from '../services/localApi/user.service';
 import { StorageAppService } from '../services/storage-app.service';
-
+import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -17,7 +17,14 @@ export class ProfileComponent implements OnInit {
     role: undefined,
     createAccountDate: undefined
   };
-
+  profileForm = new FormGroup({
+    name: new FormControl(''),
+    surname: new FormControl(''),
+    email: new FormControl(''),
+    idUser: new FormControl(''),
+    role: new FormControl(''),
+    createAcountDate: new FormControl('')
+  });
   constructor(
     private userService: UserService,
     private storage: StorageAppService
@@ -25,13 +32,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     // ver como mostrar o setear correctamente el resultado de la response.
     this.userService.getUserById(this.storage.obtenerValor('idUser')).subscribe( result => {
-      this.user = result;
-      console.log('result request: ' + result.name);
-      console.log('user: ' + this.user.name);
+      this.profileForm.setValue(result);
     });
   }
 
-  saveData() {
-    console.log('Action save data');
+  onSubmit() {
+    // to do
+    // metodo para guardar cambios en los datos del usuario
+    console.log('hola mundo!');
   }
 }
