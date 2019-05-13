@@ -3,24 +3,18 @@ import { User } from '../model/user';
 import { UserService } from '../services/localApi/user.service';
 import { StorageAppService } from '../services/storage-app.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: User = {
-    idUser: 0,
-    name: undefined,
-    surname: undefined,
-    email: undefined,
-    role: undefined,
-    createAccountDate: undefined
-  };
+
   profileForm = new FormGroup({
-    name: new FormControl(''),
-    surname: new FormControl(''),
-    email: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    surname: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.email),
     idUser: new FormControl(''),
     role: new FormControl(''),
     createAcountDate: new FormControl('')
@@ -37,8 +31,5 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    // to do
-    // metodo para guardar cambios en los datos del usuario
-    console.log('hola mundo!');
   }
 }
