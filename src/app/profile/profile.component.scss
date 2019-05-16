@@ -1,8 +1,5 @@
 @import "../../stylesVars.scss";
-.content {
-  // background: $primary-color;
-  height: 100%;
-}
+
 img {
   height: 10em;
   width: 8em;
@@ -22,3 +19,19 @@ mat-card {
 
 }
 
+button {
+  margin-left:2%!important;
+}
+
+mat-expansion-panel {
+  margin:0!important;
+  padding: 0!important;
+  width: 100%;
+  mat-form-field{
+    width: 70%;
+
+  }
+}
+mat-accordion {
+  text-align: center;
+}

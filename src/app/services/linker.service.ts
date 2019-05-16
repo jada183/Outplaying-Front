@@ -22,9 +22,6 @@ export class LinkerService {
     return this.storage.obtenerValor('token');
   }
 
-  setToken(token: string): void {
-    this.token = token;
-  }
   getEndPointUrl(service: any): string {
     const baseUrl = 'http://localhost:8080/';
     const serviceUrl = service;

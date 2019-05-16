@@ -7,6 +7,7 @@ import { StorageAppService } from '../services/storage-app.service';
 import { EventEmitter } from 'events';
 import { SharedService } from '../services/shared.service';
 import { UserService } from '../services/localApi/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     private linker: LinkerService,
     private storage: StorageAppService,
     private sharedService: SharedService,
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   ngOnInit() {}

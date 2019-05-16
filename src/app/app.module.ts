@@ -13,7 +13,6 @@ import { InfoAccountLolModule } from './info-account-lol/info-account-lol.module
 import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileModule } from './profile/profile.module';
 import { MyPostModule } from './my-post/my-post.module';
-
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
