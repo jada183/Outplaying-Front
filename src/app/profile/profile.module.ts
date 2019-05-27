@@ -14,6 +14,7 @@ import { ConfirmarComponent } from '../dialogs/confirmar/confirmar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatDialogModule,
     MatExpansionModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule
   ],
   declarations: [ProfileComponent, ConfirmarComponent],
   exports: [ProfileComponent],

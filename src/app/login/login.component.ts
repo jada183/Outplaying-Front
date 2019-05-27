@@ -7,7 +7,7 @@ import { StorageAppService } from '../services/storage-app.service';
 import { EventEmitter } from 'events';
 import { SharedService } from '../services/shared.service';
 import { UserService } from '../services/localApi/user.service';
-
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     private storage: StorageAppService,
     private sharedService: SharedService,
     private userService: UserService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -33,16 +34,10 @@ export class LoginComponent implements OnInit {
       const idUser = resp.headers.get('idUSer');
       this.storage.guardarValor('idUser', idUser);
       this.router.navigate(['/noticias']);
-      /**
-      this.userService.getUserById(idUser).subscribe(response => {
-        this.userService.setUserAuthenticated(response);
-        this.router.navigate(['/noticias']);
-      }
-    );*/
-
-    }, () => {
-      // to change
-      alert('Invalid credentials');
+    }, error => {
+        this.snackBar.open('credenciales incorrectas', 'Aceptar', {
+        duration: 2000
+      });
     });
 
     return false;

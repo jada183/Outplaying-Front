@@ -15,6 +15,8 @@ export class ConfirmarComponent implements OnInit {
   ngOnInit() {
     if ( this.data = 'actualizarUsuario') {
       this.consulta = 'desea actualizar usuario?';
+    } else if ( this.data = 'actualizarContraseña') {
+        this.consulta = 'desea actualizar contraseña?';
     }
   }
   cancelar() {

@@ -20,7 +20,17 @@ export class UserService {
   }
   updateUser(user: any): Observable<any> {
     const genericRequest = new GenericRequest(
-      Object.assign(`users`, {}), null, user
+      Object.assign(`users`, {}),
+      null,
+      user
+    );
+    return this.linkerService.putModel(genericRequest);
+  }
+  updatePassword(credential: any) {
+    const genericRequest = new GenericRequest(
+      Object.assign(`credentials/password`, {}),
+      null,
+      credential
     );
     return this.linkerService.putModel(genericRequest);
   }
