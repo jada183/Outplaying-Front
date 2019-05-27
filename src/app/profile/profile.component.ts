@@ -18,6 +18,7 @@ import {
   ErrorStateMatcher
 } from '@angular/material';
 import { validateConfig } from '@angular/router/src/config';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -102,11 +103,11 @@ export class ProfileComponent implements OnInit {
                 }
               );
             },
-            error => {
+            (error: HttpErrorResponse) => {
               // to change
-              console.log('mensaje de error:' + error);
-              this.snackBar.open('contraseña incorrecta', 'aceptar', {
-                duration: 2000
+              console.log(error.error.message);
+              this.snackBar.open(error.error.message, 'aceptar', {
+                duration: 2500
               });
             }
           );
