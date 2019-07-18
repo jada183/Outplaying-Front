@@ -1,130 +1,70 @@
 <div class="content row">
-  <div class="offset-md-4 col-md-4">
-    <mat-card class="card">
-      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-        <mat-card-header>
-          <mat-card-title>Datos personales</mat-card-title>
-        </mat-card-header>
-        <mat-divider></mat-divider>
-        <img
-          src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-          class="example-header-image"
-        />
-        <mat-card-content>
-          <!--To add-->
-          <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="Nombre"
-              formControlName="name"
-              name="name"
-              required
-            />
-            <mat-icon matSuffix color="primary">person</mat-icon>
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="Apellidos"
-              formControlName="surname"
-              name="surname"
-              required
-            />
-            <mat-icon matSuffix color="primary">person</mat-icon>
-          </mat-form-field>
+    <div class="offset-lg-4 col-lg-4  offset-md-2 col-md-8 offset-sm-2 col-sm-8 offset-xs-2 col-xs-8">
+        <mat-card>
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                <mat-card-header>
+                    <mat-card-title>Datos personales</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" class="example-header-image" />
+                <mat-card-content>
+                    <!--To add-->
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Nombre" formControlName="name" name="name" required />
+                        <mat-icon matSuffix color="primary">person</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Apellidos" formControlName="surname" name="surname" required />
+                        <mat-icon matSuffix color="primary">person</mat-icon>
+                    </mat-form-field>
 
-          <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="Correo electronico"
-              formControlName="email"
-              name="email"
-              required
-            />
-            <mat-icon matSuffix color="primary">mail</mat-icon>
-          </mat-form-field>
-          <mat-spinner
-            [style.display]="showSpinner ? 'block' : 'none'"
-          ></mat-spinner>
-        </mat-card-content>
-        <mat-card-actions>
-          <button
-            type="submit"
-            [disabled]="!profileForm.valid"
-            mat-raised-button
-            color="primary"
-          >
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Correo electronico" formControlName="email" name="email" required />
+                        <mat-icon matSuffix color="primary">mail</mat-icon>
+                    </mat-form-field>
+                    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button type="submit" [disabled]="!profileForm.valid" mat-raised-button color="primary">
             Guardar datos
           </button>
-        </mat-card-actions>
-      </form>
-      <!--Cambia contraseña-->
-      <mat-accordion>
-        <form
-          [formGroup]="updatePasswordForm"
-          (ngSubmit)="onSubmitNewPassword()"
-        >
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Cambiar Contraseña
-              </mat-panel-title>
-            </mat-expansion-panel-header>
+                </mat-card-actions>
+            </form>
+            <!--Cambia contraseña-->
+            <mat-accordion>
+                <form [formGroup]="updatePasswordForm" (ngSubmit)="onSubmitNewPassword()">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Cambiar Contraseña
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
 
-            <mat-form-field class="half-width">
-              <input
-                matInput
-                type="password"
-                placeholder="Contraseña actual"
-                class="half-width"
-                formControlName="lastPassword"
-                [type]="hide ? 'password' : 'text'"
-              />
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </mat-form-field>
+                        <mat-form-field class="half-width">
+                            <input matInput type="password" placeholder="Contraseña actual" class="half-width" formControlName="lastPassword" [type]="hide ? 'password' : 'text'" />
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </mat-form-field>
 
-            <mat-form-field>
-              <input
-                matInput
-                type="password"
-                placeholder="Nueva contraseña"
-                class="half-width"
-                formControlName="newPassword"
-                [errorStateMatcher]="matcher"
-                [type]="hide2 ? 'password' : 'text'"
-              />
-              <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-              <mat-error *ngIf="updatePasswordForm.hasError('notSame')">
-                  Contraseñas no coinciden
-               </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                matInput
-                type="password"
-                placeholder="Confirmar nueva contraseña"
-                class="half-width"
-                formControlName="newPasswordConfirm"
-                [type]="hide3 ? 'password' : 'text'"
-                [errorStateMatcher]="matcher"
-
-              />
-              <mat-icon matSuffix (click)="hide3 = !hide3">{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
-              <mat-error *ngIf="updatePasswordForm.hasError('notSame')">
-                 Contraseñas no coinciden
-              </mat-error>
-            </mat-form-field>
-            <button
-              type="submit"
-              [disabled]="!updatePasswordForm.valid"
-              mat-raised-button
-              color="primary"
-            >
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="Nueva contraseña" class="half-width" formControlName="newPassword" [errorStateMatcher]="matcher" [type]="hide2 ? 'password' : 'text'" />
+                            <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            <mat-error *ngIf="updatePasswordForm.hasError('notSame')">
+                                Contraseñas no coinciden
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="Confirmar nueva contraseña" class="half-width" formControlName="newPasswordConfirm" [type]="hide3 ? 'password' : 'text'" [errorStateMatcher]="matcher" />
+                            <mat-icon matSuffix (click)="hide3 = !hide3">{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            <mat-error *ngIf="updatePasswordForm.hasError('notSame')">
+                                Contraseñas no coinciden
+                            </mat-error>
+                        </mat-form-field>
+                        <button type="submit" [disabled]="!updatePasswordForm.valid" mat-raised-button color="primary" class="buttonChangePass">
               Cambiar contraseña
             </button>
-          </mat-expansion-panel>
-        </form>
-      </mat-accordion>
-    </mat-card>
-  </div>
+                    </mat-expansion-panel>
+                </form>
+            </mat-accordion>
+        </mat-card>
+    </div>
 </div>

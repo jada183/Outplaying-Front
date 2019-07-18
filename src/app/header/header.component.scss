@@ -1,53 +1,77 @@
 @import '../../stylesVars.scss';
 .textTitle {
-  color: $secondary-color;
-  font-weight: bold;
+    color: $secondary-color;
+    font-weight: bold;
 }
+
 .menuheaderContent {
-  margin-left: 10%;
-  margin-right: 10%;
-  height: inherit;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: inherit;
 }
+
 .withoutBackgroundColor {
-  height:inherit;
-  font-size: 18px;
-  color: $primary-color-font;
-  font-weight: bold;
-  padding-left:10%;
-  padding-right: 10%;
+    height: inherit;
+    font-size: 18px;
+    color: $primary-color-font;
+    font-weight: bold;
+    padding-left: 10%;
+    padding-right: 10%;
 }
+
 .withoutBackgroundColor:hover {
-  background-color: $secondary-color!important;
+    background-color: $secondary-color!important;
 }
+
 a {
-  height:inherit;
+    height: inherit;
 }
 
 .flex-spacer {
-  flex-grow: 1;
+    flex-grow: 1;
 }
+
 .accountButton {
-  color: $primary-color-font;
+    color: $primary-color-font;
 }
+
 .accountButton:hover {
-  background-color: $secondary-color!important;
+    background-color: $secondary-color!important;
 }
 
 .menuAccountButton {
-  width: 100%;
-  background-color: $primary-color-dark!important;
-  color: $primary-color-font;
-  mat-icon {
+    width: 100%;
+    background-color: $primary-color-dark!important;
     color: $primary-color-font;
-  }
+    mat-icon {
+        color: $primary-color-font;
+    }
 }
+
 a.fullancholink {
-  text-decoration: none;
+    text-decoration: none;
 }
+
 .fullancholink {
-  width:100%;
+    width: 100%;
 }
 
 .currentplacebutton {
-  background-color: orange;
+    background-color: orange;
+}
+
+@media (max-width: 820px) {
+    .withoutBackgroundColor {
+        height: inherit;
+        font-size: 18px;
+        color: $primary-color-font;
+        font-weight: bold;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .menuheaderContent {
+        margin-left: 2%;
+        margin-right: 2%;
+        height: inherit;
+    }
 }

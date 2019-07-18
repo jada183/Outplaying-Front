@@ -1,37 +1,39 @@
 @import "../../stylesVars.scss";
-
 img {
-  height: 10em;
-  width: 8em;
-  border: $secondary-color solid;
-  margin-top: 5%;
-  margin-bottom: 5%;
+    height: 10em;
+    width: 8em;
+    border: $secondary-color solid;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
+
 .full-width {
-  width: 100%;
+    width: 100%;
 }
+
 mat-form-field {
-  margin-bottom: 2%;
-
+    margin-bottom: 2%;
 }
-mat-card {
-  margin-top: 5%;
 
+mat-card {
+    margin-top: 5%;
 }
 
 button {
-  margin-left:2%!important;
+    margin-left: 2%!important;
 }
 
 mat-expansion-panel {
-  margin:0!important;
-  padding: 0!important;
-  width: 100%;
-  mat-form-field{
-    width: 70%;
+    margin: 0!important;
+    padding: 0!important;
+    width: 100%;
+    mat-form-field {
+        width: 70%;
+    }
+}
 
-  }
-}
 mat-accordion {
-  text-align: center;
+    text-align: center;
 }
+
+.buttonChangePass {}
