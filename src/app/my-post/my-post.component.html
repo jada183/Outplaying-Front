@@ -1,3 +1,20 @@
-<p>
-  my-post works!
-</p>
+<div class="content row">
+    <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>
+                    <h5>{{ post.postName }}</h5>
+                </mat-card-title>
+                <mat-card-subtitle>{{post.date | date: 'fullDate' }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://i.pinimg.com/originals/9e/38/13/9e3813503c31c068146fbb8cd18db0de.jpg" alt="Photo of a Shiba Inu" />
+            <mat-card-content>
+                <p>
+                    {{ post.contentText }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions> </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

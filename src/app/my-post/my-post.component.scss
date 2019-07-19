@@ -1,0 +1,17 @@
+@import "../../stylesVars.scss";
+img {
+    max-height: 320px;
+    border: $secondary-color solid;
+}
+
+.example-card {
+    // max-width: 400px;
+}
+
+.contentCards {
+    margin-top: 5%;
+}
+
+mat-card {
+    margin-top: 2%;
+}

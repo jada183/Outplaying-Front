@@ -10,7 +10,6 @@ import { User } from '../../model/user';
 export class UserService {
   constructor(private linkerService: LinkerService) {}
   idUser: number;
-  userAuthenticated: User;
   getUserById(idUser: any): Observable<any> {
     this.idUser = idUser;
     const genericRequest = new GenericRequest(
