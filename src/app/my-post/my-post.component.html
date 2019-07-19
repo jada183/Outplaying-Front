@@ -1,5 +1,5 @@
 <div class="content row">
-    <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6">
+    <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6 containerCards">
         <mat-card class="example-card">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
@@ -14,7 +14,16 @@
                     {{ post.contentText }}
                 </p>
             </mat-card-content>
-            <mat-card-actions> </mat-card-actions>
+            <mat-card-actions>
+                <div *ngIf="post.status === 'Posteado'">
+                    <mat-icon>thumb_up</mat-icon>
+                    {{post.likes}}
+                </div>
+                <div *ngIf="post.status != 'Posteado'">
+                    <span [ngClass]="{'pendienteStatusText': post.status == 'Pendiente',
+                    'denegadoStatusText': post.status == 'Denegado' }">{{post.status}}</span>
+                </div>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>
