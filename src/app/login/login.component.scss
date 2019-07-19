@@ -1,9 +1,27 @@
+@import "../../stylesVars.scss";
 .content {
-  margin-top: 2%;
+    margin-top: 2%;
 }
+
 .full-width {
-  width: 100%;
+    width: 100%;
 }
-mat-form-field {
-  margin-top: 2%;
+
+.loginContainer {
+    align-content: center;
 }
+
+mat-card-actions {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 2% !important;
+}
+
+mat-card-header {
+    margin-bottom: 5%;
+}
+
+// .buttonSubmit {
+//     background-color: $primary-color-dark!important;
+//     color: $primary-color-font;
+// }

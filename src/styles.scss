@@ -2,18 +2,6 @@
 
 @import "./StylesVars.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-html,
-body {
-    height: 100%;
-    min-width: 560px;
-    margin: 0;
-}
-
-body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-}
-
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -46,6 +34,38 @@ mat-toolbar {
 body {
     background-color: #F7F5F3;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    min-width: 600px;
+    margin: 0;
+}
+
+.content {
+    height: 100%;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $primary-color-dark;
+}
+
+button {
+    background-color: $primary-color-dark !important;
+    color: $primary-color-font !important;
+}
+
+mat-icon {
+    color: $primary-color-dark !important;
 }
 
 // ventana de lol
@@ -58,10 +78,4 @@ body {
         font-weight: bold;
         color: $primary-color-dark;
     }
-}
-
-.content {
-    height: 100%;
-    margin-right: 0;
-    margin-left: 0;
 }
