@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { APP_ROUTING } from './app.routes';
 
@@ -13,6 +13,9 @@ import { InfoAccountLolModule } from './info-account-lol/info-account-lol.module
 import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileModule } from './profile/profile.module';
 import { MyPostModule } from './my-post/my-post.module';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'es');
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -36,7 +39,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
