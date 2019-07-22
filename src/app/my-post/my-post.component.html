@@ -22,7 +22,7 @@
                     </div>
                     <div class="offset-lg-9 offset-md-9 col-lg-1 col-md-1">
                         <button mat-icon-button>
-              <mat-icon class="deleteIcon">delete</mat-icon>
+              <mat-icon class="deleteIcon" (click)="eliminarEvento(post.idPost)">delete</mat-icon>
             </button>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
             }" class="col-md-2 col-lg-2">{{ post.status }}</span
           >
           <div class="offset-lg-9 offset-md-9 col-lg-1 col-md-1">
-            <button mat-icon-button>
+            <button mat-icon-button (click)="eliminarEvento(post.idPost)">
               <mat-icon class="deleteIcon">delete</mat-icon>
             </button>
           </div>

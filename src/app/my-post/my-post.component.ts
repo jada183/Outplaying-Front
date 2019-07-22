@@ -21,4 +21,12 @@ export class MyPostComponent implements OnInit {
     });
   }
 
+  eliminarEvento(idPost: number) {
+    // TO DO agregar dialog de confirmacion.
+    this.postService.deleteByPostId(idPost).subscribe(result => {
+      console.log(result);
+      // TO DO Recargar vista y mostrar tooltip de confirmacion.
+    });
+  }
+
 }

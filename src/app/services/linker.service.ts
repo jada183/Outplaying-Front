@@ -80,6 +80,16 @@ export class LinkerService {
       }
     );
   }
+  deleteModel(genericRequest: GenericRequest): Observable<Object> {
+    return this.http.delete(
+      this.getEndPointUrl(genericRequest.getService()),
+      {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' +  this.getToken(),
+          'Content-Type': `application/json`
+        })
+      });
+  }
   getParams(params: any, httpParams?: HttpParams): HttpParams {
     httpParams = httpParams || new HttpParams();
     for (const property in params) {

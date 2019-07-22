@@ -28,4 +28,9 @@ export class PostService {
     );
     return this.linkerService.getModel(genericRequest);
   }
+
+  deleteByPostId(idPost: number): Observable<any> {
+    const genericRequest = new GenericRequest(Object.assign(`post/${idPost}`, {}));
+    return this.linkerService.deleteModel(genericRequest);
+  }
 }
