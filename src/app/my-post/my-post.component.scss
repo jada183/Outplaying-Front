@@ -24,14 +24,15 @@ mat-card-actions {
     margin-bottom: 2%;
 }
 
-.flex-spacer {
-    flex-grow: 1;
-}
-
 .pendienteStatusText {
     color: blue;
+    margin: 0!important;
 }
 
 .denegadoStatusText {
     color: red;
+}
+
+.deleteIcon {
+    color: $primary-color-font !important;
 }
