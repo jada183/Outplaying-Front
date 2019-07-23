@@ -13,10 +13,12 @@ export class ConfirmarComponent implements OnInit {
   consulta = '';
   eliminar = false;
   ngOnInit() {
-    if ( this.data = 'actualizarUsuario') {
-      this.consulta = 'desea actualizar usuario?';
-    } else if ( this.data = 'actualizarContraseña') {
-        this.consulta = 'desea actualizar contraseña?';
+    if ( this.data === 'actualizarUsuario') {
+      this.consulta = 'Desea actualizar usuario?';
+    } else if ( this.data === 'actualizarContraseña') {
+        this.consulta = 'Desea actualizar contraseña?';
+    } else if ( this.data === 'eliminarPost') {
+      this.consulta = 'Desea eliminar este post?';
     }
   }
   cancelar() {
