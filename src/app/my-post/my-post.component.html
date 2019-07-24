@@ -1,5 +1,8 @@
 <div class="content myPostView">
     <h4 class="offset-lg-5 col-lg-2 offset-md-5 col-md-2 offset-sm-5 col-sm-2 title">Lista de publicaciones</h4>
+    <div *ngIf="postList.length === 0" class="offset-lg-5 col-lg-2 offset-md-5 col-md-2 offset-sm-5 col-sm-2 emptyListMessage">
+        No se encuentra ningun post.
+    </div>
     <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6 containerCards">
         <mat-card class="example-card">
             <mat-card-header>
@@ -21,11 +24,6 @@
                     <div class="col-md-2 col-lg-2">
                         <mat-icon class="likeIcon">thumb_up</mat-icon>{{ post.likes }}
                     </div>
-                    <div class=" offset-xl-9 offset-lg-8 offset-md-8 col-lg-2 col-md-2 offset-sm-8 col-sm-2 col-xl-1">
-                        <button mat-icon-button>
-              <mat-icon class="deleteIcon" (click)="eliminarEvento(post.idPost)">delete</mat-icon>
-            </button>
-                    </div>
                 </div>
                 <div *ngIf="post.status != 'Posteado'" class="row">
                     <span [ngClass]="{
@@ -33,10 +31,14 @@
               denegadoStatusText: post.status == 'Denegado'
             }" class="col-md-2 col-lg-2">{{ post.status }}</span
           >
-          <div class="offset-xl-9 offset-lg-8 offset-md-8 col-lg-2 col-md-2 offset-sm-8 col-sm-2 col-xl-1">
-            <button mat-icon-button (click)="eliminarEvento(post.idPost)">
-              <mat-icon class="deleteIcon">delete</mat-icon>
+          <div class="offset-xl-8 offset-lg-8 offset-md-8 offset-sm-9 col-lg-2 col-md-2 col-sm-3 col-xl-2">
+            <button mat-icon-button (click)="eliminarEvento(post.idPost)" class="crudButton">
+              <mat-icon class="crudIcon">delete</mat-icon>
             </button>
+
+              <button mat-icon-button (click)="editarPost(post)" class="crudButton">
+                <mat-icon class="crudIcon">edit</mat-icon>
+              </button>
           </div>
         </div>
       </mat-card-actions>

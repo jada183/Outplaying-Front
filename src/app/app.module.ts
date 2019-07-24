@@ -13,8 +13,10 @@ import { InfoAccountLolModule } from './info-account-lol/info-account-lol.module
 import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileModule } from './profile/profile.module';
 import { MyPostModule } from './my-post/my-post.module';
+import { PostFormModule } from './post-form/post-form.module';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+
 registerLocaleData(localeEs, 'es');
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -33,6 +35,7 @@ export function tokenGetter() {
     ProfileModule,
     SharedModule,
     MyPostModule,
+    PostFormModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

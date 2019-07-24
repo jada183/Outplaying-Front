@@ -7,6 +7,6 @@ export class Post {
   likes: number;
   manageDate: Date;
   status: string;
-  IdUser: number;
-  IdUserManager: number;
+  idUser: number;
+  idUserManager: number;
 }
