@@ -3,7 +3,8 @@ import {
   HttpClient,
   HttpHeaders,
   HttpParams,
-  HttpResponse
+  HttpResponse,
+  HttpEvent
 } from '@angular/common/http';
 import { GenericRequest } from '../model/generic-model-request';
 import { Observable } from 'rxjs';
@@ -15,8 +16,7 @@ import { StorageAppService } from './storage-app.service';
 })
 export class LinkerService {
   private token: string;
-  constructor(private http: HttpClient,
-    private storage: StorageAppService) {}
+  constructor(private http: HttpClient, private storage: StorageAppService) {}
 
   getToken(): string {
     return this.storage.obtenerValor('token');
@@ -34,7 +34,7 @@ export class LinkerService {
       genericRequest.getData(),
       {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer ' +  this.getToken(),
+          Authorization: 'Bearer ' + this.getToken()
         }),
         observe: 'body',
         params: this.getParams(genericRequest.getParams())
@@ -59,7 +59,7 @@ export class LinkerService {
       this.getEndPointUrl(genericRequest.getService()),
       {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer ' +  this.getToken(),
+          Authorization: 'Bearer ' + this.getToken()
         }),
         observe: 'body',
         params: this.getParams(genericRequest.getParams)
@@ -72,23 +72,21 @@ export class LinkerService {
       genericRequest.getData(),
       {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer ' +  this.getToken(),
+          Authorization: 'Bearer ' + this.getToken(),
           'Content-Type': `application/json`
         }),
         observe: 'body',
-        params: this.getParams(genericRequest.getParams()),
+        params: this.getParams(genericRequest.getParams())
       }
     );
   }
   deleteModel(genericRequest: GenericRequest): Observable<Object> {
-    return this.http.delete(
-      this.getEndPointUrl(genericRequest.getService()),
-      {
-        headers: new HttpHeaders({
-          'Authorization': 'Bearer ' +  this.getToken(),
-          'Content-Type': `application/json`
-        })
-      });
+    return this.http.delete(this.getEndPointUrl(genericRequest.getService()), {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.getToken(),
+        'Content-Type': `application/json`
+      })
+    });
   }
   getParams(params: any, httpParams?: HttpParams): HttpParams {
     httpParams = httpParams || new HttpParams();
@@ -100,5 +98,17 @@ export class LinkerService {
       }
     }
     return httpParams;
+  }
+  postFile(genericRequest: GenericRequest): Observable<HttpEvent<{}>> {
+    return this.http.post<HttpEvent<{}>>(
+      this.getEndPointUrl(genericRequest.getService()),
+      genericRequest.getData(),
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.getToken()
+        }),
+        reportProgress: true
+      }
+    );
   }
 }

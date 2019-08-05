@@ -1,5 +1,6 @@
 @import "../../stylesVars.scss";
 img {
+    min-height: 320px;
     max-height: 320px;
     border: $secondary-color solid;
 }
@@ -39,4 +40,8 @@ mat-card-actions {
 
 .full-width {
     width: 100%;
+}
+
+textarea {
+    min-height: 120px;
 }

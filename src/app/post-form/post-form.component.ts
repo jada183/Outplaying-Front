@@ -2,13 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../services/shared.service';
 import { Post } from '../model/post';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UploadFileService } from '../services/localApi/upload-file.service';
+
+export class ImageSnippet {
+  pending: boolean;
+  status: string;
+  constructor(public src: string, public file: File) {}
+}
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss']
 })
-export class PostFormComponent implements OnInit {
 
+export class PostFormComponent implements OnInit {
+  selectedFile = new ImageSnippet(undefined, undefined);
   postForm = new FormGroup({
     idPost: new FormControl(''),
     date:  new FormControl(''),
@@ -21,7 +29,7 @@ export class PostFormComponent implements OnInit {
     manageDate: new FormControl(''),
     status: new FormControl(''),
   });
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private uploadService: UploadFileService) {
 
   }
   post: Post = new Post;
@@ -37,7 +45,27 @@ export class PostFormComponent implements OnInit {
 
   }
   guardar() {
-    console.log('hola mundo');
-  }
 
+    this.uploadService.pushFileToStorage(this.selectedFile.file).subscribe( event => {
+    });
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'fail';
+    this.selectedFile.src = '';
+
+  }
+  onFileChanged(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.selectedFile.pending = true;
+      this.uploadService.pushFileToStorage(this.selectedFile.file).subscribe( rsult => {
+        this.selectedFile.pending = true;
+      });
+      });
+
+    reader.readAsDataURL(file);
+  }
 }
+
