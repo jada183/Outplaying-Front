@@ -26,6 +26,8 @@ import { UploadFileService } from '../services/localApi/upload-file.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+  rootPath = 'http://localhost:8080/file/';
   imgURL = '';
   hide = true;
   hide2 = true;
@@ -64,7 +66,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(result => {
         this.profileForm.setValue(result);
         if (result.urlImg !== undefined && result.urlImg !== null) {
-          this.imgURL = 'http://localhost:8080/file/' + result.urlImg;
+          this.imgURL = this.rootPath + result.urlImg;
         }
         this.updatePasswordForm
           .get('idUser')
