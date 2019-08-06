@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
       .getUserById(this.storage.obtenerValor('idUser'))
       .subscribe(result => {
         this.profileForm.setValue(result);
-        if (result.urlImg !== undefined) {
+        if (result.urlImg !== undefined && result.urlImg !== null) {
           this.imgURL = 'http://localhost:8080/file/' + result.urlImg;
         }
         this.updatePasswordForm
