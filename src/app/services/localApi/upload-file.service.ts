@@ -24,4 +24,11 @@ export class UploadFileService {
     );
     return this.linkerService.postFile(genericRequest);
   }
+  getFile(): Observable<HttpEvent<{}>> {
+    const genericRequest = new GenericRequest(
+      Object.assign(`file`, {}),
+      null
+    );
+    return this.linkerService.getFile(genericRequest);
+  }
 }

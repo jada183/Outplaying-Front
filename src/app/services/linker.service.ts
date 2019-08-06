@@ -106,8 +106,26 @@ export class LinkerService {
       this.getEndPointUrl(genericRequest.getService()),
       genericRequest.getData(),
       {
+        headers:  new HttpHeaders({
+          Authorization: 'Bearer ' + this.getToken()
+        }),
         reportProgress: true,
         responseType: 'text'
+      }
+    );
+    return this.http.request(req);
+  }
+
+  getFile(genericRequest: GenericRequest): Observable<HttpEvent<{}>> {
+    const req = new HttpRequest(
+      'GET',
+      this.getEndPointUrl(genericRequest.getService()),
+      {
+        headers:  new HttpHeaders({
+          Authorization: 'Bearer ' + this.getToken()
+        }),
+        reportProgress: true,
+        responseType: 'file'
       }
     );
     return this.http.request(req);

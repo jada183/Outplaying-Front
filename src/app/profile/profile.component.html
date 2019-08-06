@@ -8,7 +8,9 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-divider></mat-divider>
-                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" class="example-header-image" />
+                <img *ngIf="imgURL=== ''" src="/assets/img/no-image-box.png" class="example-header-image" />
+                <img *ngIf="imgURL" [src]="imgURL" class="example-header-image" />
+                <input #imageInput type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />
                 <mat-card-content>
                     <!--To add-->
                     <mat-form-field class="full-width">

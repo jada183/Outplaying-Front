@@ -19,24 +19,27 @@ import {
 } from '@angular/material';
 import { validateConfig } from '@angular/router/src/config';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UploadFileService } from '../services/localApi/upload-file.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  imgURL = '';
   hide = true;
   hide2 = true;
   hide3 = true;
   user: User;
-  matcher = new MyErrorStateMatcher();
+  // matcher = new MyErrorStateMatcher();
   profileForm = new FormGroup({
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
     idUser: new FormControl(''),
     role: new FormControl(''),
-    createAcountDate: new FormControl('')
+    createAcountDate: new FormControl(''),
+    urlImg: new FormControl('')
   });
   updatePasswordForm = new FormGroup(
     {
@@ -51,7 +54,8 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private storage: StorageAppService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private uploadService: UploadFileService
   ) {}
   ngOnInit() {
     // ver como mostrar o setear correctamente el resultado de la response.
@@ -59,6 +63,9 @@ export class ProfileComponent implements OnInit {
       .getUserById(this.storage.obtenerValor('idUser'))
       .subscribe(result => {
         this.profileForm.setValue(result);
+        if (result.urlImg !== undefined) {
+          this.imgURL = 'http://localhost:8080/file/' + result.urlImg;
+        }
         this.updatePasswordForm
           .get('idUser')
           .setValue(this.storage.obtenerValor('idUser'));
@@ -122,20 +129,30 @@ export class ProfileComponent implements OnInit {
 
     return pass === confirmPass ? null : { notSame: true };
   }
-}
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-    const invalidParent = !!(
-      control &&
-      control.parent &&
-      control.parent.invalid &&
-      control.parent.dirty
-    );
-
-    return invalidCtrl || invalidParent;
+  onFileChanged(imageInput: any) {
+    const reader = new FileReader();
+    const file: File = imageInput.files[0];
+    reader.readAsDataURL(imageInput.files[0]);
+    reader.onload = ((_event) => {
+      this.imgURL = reader.result;
+    });
+    this.uploadService.pushFileToStorage(file).subscribe();
   }
 }
+
+// export class MyErrorStateMatcher implements ErrorStateMatcher {
+//   isErrorState(
+//     control: FormControl | null,
+//     form: FormGroupDirective | NgForm | null
+//   ): boolean {
+//     const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+//     const invalidParent = !!(
+//       control &&
+//       control.parent &&
+//       control.parent.invalid &&
+//       control.parent.dirty
+//     );
+
+//     return invalidCtrl || invalidParent;
+//   }
+// }

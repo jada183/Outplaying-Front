@@ -54,20 +54,6 @@ export class PostFormComponent implements OnInit {
 
   }
   onFileChanged(imageInput: any) {
-    // const file: File = imageInput.files[0];
-    // const reader = new FileReader();
-    // reader.readAsDataURL(imageInput.files[0]);
-    // reader.addEventListener('load', (event: any) => {
-    //   this.selectedFile = new ImageSnippet(event.target.result, file);
-    //   this.selectedFile.pending = true;
-    //   this.uploadService.pushFileToStorage(this.selectedFile.file).subscribe( rsult => {
-    //     this.selectedFile.pending = true;
-    //     this.imgURL = reader.result;
-    //   });
-    //   });
-
-    // reader.readAsDataURL(file);
-
     const reader = new FileReader();
     const file: File = imageInput.files[0];
     reader.readAsDataURL(imageInput.files[0]);
