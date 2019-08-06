@@ -32,14 +32,14 @@ export class PostFormComponent implements OnInit {
   constructor(private sharedService: SharedService, private uploadService: UploadFileService) {
 
   }
-  post: Post = new Post;
+  post: Post = new Post(null, null, null, null, new Date(), null, null, null,  null, null);
+  imgURL = '';
   ngOnInit() {
     if (this.sharedService.selectedPost !== undefined) {
       this.post = this.sharedService.selectedPost;
     } else {
-      this.post = new Post;
+      // this.post = new Post;
     }
-    console.log(this.post);
     this.postForm.setValue(this.post);
 
 
@@ -54,18 +54,27 @@ export class PostFormComponent implements OnInit {
 
   }
   onFileChanged(imageInput: any) {
-    const file: File = imageInput.files[0];
+    // const file: File = imageInput.files[0];
+    // const reader = new FileReader();
+    // reader.readAsDataURL(imageInput.files[0]);
+    // reader.addEventListener('load', (event: any) => {
+    //   this.selectedFile = new ImageSnippet(event.target.result, file);
+    //   this.selectedFile.pending = true;
+    //   this.uploadService.pushFileToStorage(this.selectedFile.file).subscribe( rsult => {
+    //     this.selectedFile.pending = true;
+    //     this.imgURL = reader.result;
+    //   });
+    //   });
+
+    // reader.readAsDataURL(file);
+
     const reader = new FileReader();
-
-    reader.addEventListener('load', (event: any) => {
-      this.selectedFile = new ImageSnippet(event.target.result, file);
-      this.selectedFile.pending = true;
-      this.uploadService.pushFileToStorage(this.selectedFile.file).subscribe( rsult => {
-        this.selectedFile.pending = true;
-      });
-      });
-
-    reader.readAsDataURL(file);
+    const file: File = imageInput.files[0];
+    reader.readAsDataURL(imageInput.files[0]);
+    reader.onload = ((_event) => {
+      this.imgURL = reader.result;
+    });
+    this.uploadService.pushFileToStorage(file).subscribe();
   }
 }
 

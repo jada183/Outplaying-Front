@@ -16,8 +16,8 @@
                     </mat-card-subtitle>
                 </mat-card-header>
 
-                <img mat-card-image *ngIf="!selectedFile.pending" src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
-                <img *ngIf="selectedFile.pending" mat-card-image src="http://localhost:8080/file/{{selectedFile.file.name}}" alt="Photo of a Shiba Inu" />
+                <img mat-card-image *ngIf="imgURL===''" src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
+                <img *ngIf="imgURL" mat-card-image [src]="imgURL" alt="Photo of a Shiba Inu" />
 
                 <input #imageInput type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />
                 <mat-card-content>

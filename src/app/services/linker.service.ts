@@ -4,7 +4,8 @@ import {
   HttpHeaders,
   HttpParams,
   HttpResponse,
-  HttpEvent
+  HttpEvent,
+  HttpRequest
 } from '@angular/common/http';
 import { GenericRequest } from '../model/generic-model-request';
 import { Observable } from 'rxjs';
@@ -100,15 +101,15 @@ export class LinkerService {
     return httpParams;
   }
   postFile(genericRequest: GenericRequest): Observable<HttpEvent<{}>> {
-    return this.http.post<HttpEvent<{}>>(
+    const req = new HttpRequest(
+      'POST',
       this.getEndPointUrl(genericRequest.getService()),
       genericRequest.getData(),
       {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.getToken()
-        }),
-        reportProgress: true
+        reportProgress: true,
+        responseType: 'text'
       }
     );
+    return this.http.request(req);
   }
 }
