@@ -134,6 +134,7 @@ export class ProfileComponent implements OnInit {
   onFileChanged(imageInput: any) {
     const reader = new FileReader();
     const file: File = imageInput.files[0];
+    this.profileForm.get('urlImg').setValue(file.name);
     reader.readAsDataURL(imageInput.files[0]);
     reader.onload = ((_event) => {
       this.imgURL = reader.result;

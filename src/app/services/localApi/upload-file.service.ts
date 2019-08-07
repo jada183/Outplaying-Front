@@ -18,7 +18,7 @@ export class UploadFileService {
     const formData = new FormData();
     formData.append('file', file);
     const genericRequest = new GenericRequest(
-      Object.assign(`file`, {}),
+      Object.assign(`file/temp`, {}),
       null,
       formData
     );
