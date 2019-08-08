@@ -18,7 +18,7 @@ import {
   ErrorStateMatcher
 } from '@angular/material';
 import { validateConfig } from '@angular/router/src/config';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse, HttpEventType, HttpEvent } from '@angular/common/http';
 import { UploadFileService } from '../services/localApi/upload-file.service';
 @Component({
   selector: 'app-profile',
@@ -134,12 +134,16 @@ export class ProfileComponent implements OnInit {
   onFileChanged(imageInput: any) {
     const reader = new FileReader();
     const file: File = imageInput.files[0];
-    this.profileForm.get('urlImg').setValue(file.name);
     reader.readAsDataURL(imageInput.files[0]);
     reader.onload = ((_event) => {
       this.imgURL = reader.result;
     });
-    this.uploadService.pushFileToStorage(file).subscribe();
+    this.uploadService.pushFileToStorage(file).subscribe( event  => {
+      // IMPORTANT
+      if (event.type === HttpEventType.Response) {
+        this.profileForm.get('urlImg').setValue(event.body);
+      }
+    });
   }
 }
 
