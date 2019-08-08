@@ -3,6 +3,7 @@ import { SharedService } from '../services/shared.service';
 import { StorageAppService } from '../services/storage-app.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/localApi/user.service';
+import { Post } from '../model/post';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,6 +33,9 @@ export class HeaderComponent implements OnInit {
     // this.currentURL = 'noticias';
     this.router.navigate(['/noticias']);
     this.sharedService.emitChange('false');
+  }
+  newPost() {
+    this.sharedService.selectedPost =  new  Post(null, null, null, null, null, null, null, null, null, null);
   }
 
 }

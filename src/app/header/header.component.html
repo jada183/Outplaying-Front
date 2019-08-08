@@ -42,6 +42,12 @@
           Mis publicaciones
         </button>
             </a>
+            <a class="nav-link button" [routerLink]="['/postForm']" class="fullancholink">
+                <button mat-menu-item class="menuAccountButton" [ngClass]="{ currentplacebutton: currentURL === 'postForm' }" (click)="newPost()">
+        <mat-icon class="menu">add</mat-icon>
+        Publicar
+      </button>
+            </a>
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="logOut()" class="menuAccountButton">
         <mat-icon class="menu">exit_to_app</mat-icon>
