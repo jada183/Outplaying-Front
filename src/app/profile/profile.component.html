@@ -8,10 +8,10 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-divider></mat-divider>
-                <label *ngIf="imgURL=== ''" for="file-input">
-                  <img  src="/assets/img/no-image-box.png" class="profileImg" />
+                <label *ngIf="imgURL=== ''" for="file-input" class="profileImgLabel">
+                  <img  src="/assets/img/noProfileImg.png" class="profileImg" />
                 </label>
-                <label *ngIf="imgURL" for="file-input">
+                <label *ngIf="imgURL" for="file-input" class="profileImgLabel">
                   <img  [src]="imgURL" class="profileImg" />
                 </label>
                 <input class="inputHidden" #imageInput id="file-input" type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />
