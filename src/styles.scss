@@ -94,3 +94,11 @@ mat-card {
     cursor: pointer;
     border: 1px $secondary-color solid;
 }
+
+.mat-focused .mat-form-field-label {
+    color: $primary-color-dark!important;
+}
+
+.mat-form-field-ripple {
+    background-color: $primary-color-dark!important;
+}
