@@ -46,8 +46,6 @@ export class PostFormComponent implements OnInit {
   }
   guardar() {
 
-    this.uploadService.pushFileToStorage(this.selectedFile.file).subscribe( event => {
-    });
     this.selectedFile.pending = false;
     this.selectedFile.status = 'fail';
     this.selectedFile.src = '';
@@ -60,6 +58,7 @@ export class PostFormComponent implements OnInit {
     reader.onload = ((_event) => {
       this.imgURL = reader.result;
     });
+    // TO CHANGE
     this.uploadService.pushFileToStorage(file).subscribe();
   }
 }

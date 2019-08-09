@@ -16,10 +16,13 @@
                     </mat-card-subtitle>
                 </mat-card-header>
 
-                <img mat-card-image *ngIf="imgURL===''" src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
-                <img *ngIf="imgURL" mat-card-image [src]="imgURL" alt="Photo of a Shiba Inu" />
-
-                <input #imageInput type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />
+                <label *ngIf="imgURL===''" for="file-input" class="labelInput">
+                  <img class="profileImg" mat-card-image  *ngIf="imgURL===''" src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
+                </label>
+                <label *ngIf="imgURL" for="file-input" class="labelInput">
+                  <img  class="profileImg"  mat-card-image [src]="imgURL" alt="Photo of a Shiba Inu" />
+                </label>
+                <input class="inputHidden" id="file-input" #imageInput type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />
                 <mat-card-content>
                     <mat-form-field class="full-width" appearance="outline">
                         <textarea matInput placeholder="Texto" name="texto" required formControlName="contentText" name="contentText"></textarea>

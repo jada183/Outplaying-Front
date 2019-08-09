@@ -84,3 +84,13 @@ mat-card {
     border-radius: 0.5em !important;
     border: 1px solid $primary-color-dark;
 }
+
+// inputs filee
+.inputHidden {
+    display: none;
+}
+
+.profileImg:hover {
+    cursor: pointer;
+    border: 1px $secondary-color solid;
+}

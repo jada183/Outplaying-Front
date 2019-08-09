@@ -8,9 +8,13 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-divider></mat-divider>
-                <img *ngIf="imgURL=== ''" src="/assets/img/no-image-box.png" class="example-header-image" />
-                <img *ngIf="imgURL" [src]="imgURL" class="example-header-image" />
-                <input #imageInput type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />
+                <label *ngIf="imgURL=== ''" for="file-input">
+                  <img  src="/assets/img/no-image-box.png" class="profileImg" />
+                </label>
+                <label *ngIf="imgURL" for="file-input">
+                  <img  [src]="imgURL" class="profileImg" />
+                </label>
+                <input class="inputHidden" #imageInput id="file-input" type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />
                 <mat-card-content>
                     <!--To add-->
                     <mat-form-field class="full-width">
