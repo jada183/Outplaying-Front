@@ -16,10 +16,10 @@
                     </mat-card-subtitle>
                 </mat-card-header>
 
-                <label *ngIf="imgURL===''" for="file-input" class="labelInput">
-                  <img class="profileImg" mat-card-image  *ngIf="imgURL===''" src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
+                <label *ngIf="imgURL === ''" for="file-input" class="labelInput">
+                  <img  class="profileImg" mat-card-image  src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
                 </label>
-                <label *ngIf="imgURL" for="file-input" class="labelInput">
+                <label *ngIf="imgURL !== ''" for="file-input" class="labelInput">
                   <img  class="profileImg"  mat-card-image [src]="imgURL" alt="Photo of a Shiba Inu" />
                 </label>
                 <input class="inputHidden" id="file-input" #imageInput type="file" (change)="onFileChanged(imageInput)" accept=".png,.jpg" />

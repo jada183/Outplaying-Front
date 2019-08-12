@@ -34,11 +34,13 @@ export class PostFormComponent implements OnInit {
   }
   post: Post = new Post(null, null, null, null, new Date(), null, null, null,  null, null);
   imgURL = '';
+  rootPath = 'http://localhost:8080/file/post-img/';
   ngOnInit() {
     if (this.sharedService.selectedPost !== undefined) {
       this.post = this.sharedService.selectedPost;
-    } else {
-      // this.post = new Post;
+      if ( this.post.picturesURL !== undefined && this.post.picturesURL !== null) {
+        this.imgURL = this.rootPath + this.post.picturesURL;
+      }
     }
     this.postForm.setValue(this.post);
 
