@@ -21,6 +21,7 @@ export class MyPostComponent implements OnInit {
   ) {}
   // tslint:disable-next-line:max-line-length
   postList: Post[] = [];
+  rootPath = 'http://localhost:8080/file/post-img/';
   ngOnInit() {
     this.postService.getPostByUserLogin().subscribe(result => {
       this.postList = result;

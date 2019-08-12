@@ -14,16 +14,18 @@ export class UploadFileService {
     private storage: StorageAppService
   ) {}
 
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+  pushFileToStorage(file: File, destination: String): Observable<HttpEvent<{}>> {
     const formData = new FormData();
     formData.append('file', file);
     const genericRequest = new GenericRequest(
-      Object.assign(`file/temp`, {}),
+      Object.assign(`file/` + destination  + `/temp`, {}),
       null,
       formData
     );
     return this.linkerService.postFile(genericRequest);
   }
+
+
   getFile(): Observable<HttpEvent<{}>> {
     const genericRequest = new GenericRequest(
       Object.assign(`file`, {}),

@@ -59,7 +59,7 @@ export class PostFormComponent implements OnInit {
       this.imgURL = reader.result;
     });
     // TO CHANGE
-    this.uploadService.pushFileToStorage(file).subscribe();
+    this.uploadService.pushFileToStorage(file, 'post-img').subscribe();
   }
 }
 

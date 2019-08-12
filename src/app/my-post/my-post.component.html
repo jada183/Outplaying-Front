@@ -13,7 +13,8 @@
                 <mat-card-subtitle>{{ post.date | date: 'fullDate' }}
                 </mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
+            <img *ngIf="!post.picturesURL" mat-card-image src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
+            <img *ngIf="post.picturesURL" mat-card-image [src]="rootPath + post.picturesURL" alt="Photo of a Shiba Inu" />
             <mat-card-content>
                 <p>
                     {{ post.contentText }}

@@ -27,7 +27,7 @@ import { UploadFileService } from '../services/localApi/upload-file.service';
 })
 export class ProfileComponent implements OnInit {
 
-  rootPath = 'http://localhost:8080/file/';
+  rootPath = 'http://localhost:8080/file/profile-img/';
   imgURL = '';
   hide = true;
   hide2 = true;
@@ -138,7 +138,7 @@ export class ProfileComponent implements OnInit {
     reader.onload = ((_event) => {
       this.imgURL = reader.result;
     });
-    this.uploadService.pushFileToStorage(file).subscribe( event  => {
+    this.uploadService.pushFileToStorage(file, 'profile-img').subscribe( event  => {
       // IMPORTANT
       if (event.type === HttpEventType.Response) {
         this.profileForm.get('urlImg').setValue(event.body);
