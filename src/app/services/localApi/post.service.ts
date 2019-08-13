@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
-
-  constructor(private linkerService: LinkerService,
-    private storage: StorageAppService) { }
+  constructor(
+    private linkerService: LinkerService,
+    private storage: StorageAppService
+  ) {}
 
   // posiblemente no se use.
   getPostById(idPost: number): Observable<any> {
@@ -28,9 +29,28 @@ export class PostService {
     );
     return this.linkerService.getModel(genericRequest);
   }
+  createPost(post: any): Observable<any> {
+    const genericRequest = new GenericRequest(
+      Object.assign(`post`, {}),
+      null,
+      post
+    );
+    return this.linkerService.postModel(genericRequest);
+  }
+
+  updatePost(post: any): Observable<any> {
+    const genericRequest = new GenericRequest(
+      Object.assign(`post`, {}),
+      null,
+      post
+    );
+    return this.linkerService.putModel(genericRequest);
+  }
 
   deleteByPostId(idPost: number): Observable<any> {
-    const genericRequest = new GenericRequest(Object.assign(`post/${idPost}`, {}));
+    const genericRequest = new GenericRequest(
+      Object.assign(`post/${idPost}`, {})
+    );
     return this.linkerService.deleteModel(genericRequest);
   }
 }

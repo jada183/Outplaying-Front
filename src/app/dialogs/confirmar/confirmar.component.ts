@@ -19,6 +19,8 @@ export class ConfirmarComponent implements OnInit {
         this.consulta = 'Desea actualizar contraseña?';
     } else if ( this.data === 'eliminarPost') {
       this.consulta = 'Desea eliminar este post?';
+    } else if ( this.data === 'actualizarPost') {
+      this.consulta = 'Desea actualizar este post?';
     }
   }
   cancelar() {
