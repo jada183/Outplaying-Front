@@ -59,7 +59,8 @@ export class PostFormComponent implements OnInit {
       this.post = this.sharedService.selectedPost;
       if (
         this.post.picturesURL !== undefined &&
-        this.post.picturesURL !== null
+        this.post.picturesURL !== null &&
+        this.post.picturesURL !== ''
       ) {
         this.imgURL = this.rootPath + this.post.picturesURL;
       }
@@ -82,6 +83,7 @@ export class PostFormComponent implements OnInit {
         }
       });
     } else {
+      this.postForm.get('idUser').setValue(this.storage.obtenerValor('idUser'));
       this.postService.createPost(this.postForm.value).subscribe(res => {
         this.postForm.setValue(res);
       });
