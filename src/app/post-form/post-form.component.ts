@@ -4,7 +4,7 @@ import { Post } from '../model/post';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UploadFileService } from '../services/localApi/upload-file.service';
 import { HttpEventType } from '@angular/common/http';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmarComponent } from '../dialogs/confirmar/confirmar.component';
 import { PostService } from '../services/localApi/post.service';
 import { StorageAppService } from '../services/storage-app.service';
@@ -38,7 +38,8 @@ export class PostFormComponent implements OnInit {
     private uploadService: UploadFileService,
     public dialog: MatDialog,
     private postService: PostService,
-    private storage: StorageAppService
+    private storage: StorageAppService,
+    private snackBar: MatSnackBar
   ) {}
   post: Post = new Post(
     null,
@@ -79,6 +80,9 @@ export class PostFormComponent implements OnInit {
         if (result) {
           this.postService.updatePost(this.postForm.value).subscribe(res => {
             this.postForm.setValue(res);
+            this.snackBar.open('Post actualizado correctamente ', 'Aceptar', {
+              duration: 2000
+            });
           });
         }
       });
@@ -86,6 +90,9 @@ export class PostFormComponent implements OnInit {
       this.postForm.get('idUser').setValue(this.storage.obtenerValor('idUser'));
       this.postService.createPost(this.postForm.value).subscribe(res => {
         this.postForm.setValue(res);
+        this.snackBar.open('Post guardado correctamente ', 'Aceptar', {
+          duration: 2000
+        });
       });
     }
   }
