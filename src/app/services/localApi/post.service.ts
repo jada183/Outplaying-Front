@@ -25,7 +25,7 @@ export class PostService {
   getPostByUserLogin(): Observable<any> {
     const idUserOwner = this.storage.obtenerValor('idUser');
     const genericRequest = new GenericRequest(
-      Object.assign(`post/user/${idUserOwner}`, {})
+      Object.assign(`post/user`, {})
     );
     return this.linkerService.getModel(genericRequest);
   }
