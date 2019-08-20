@@ -5,6 +5,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmarComponent } from '../dialogs/confirmar/confirmar.component';
 import { SharedService } from '../services/shared.service';
 import { Router } from '@angular/router';
+import { StorageAppService } from '../services/storage-app.service';
 
 @Component({
   selector: 'app-my-post',
@@ -17,7 +18,8 @@ export class MyPostComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private storageAppService: StorageAppService
   ) {}
   // tslint:disable-next-line:max-line-length
   postList: Post[] = [];
@@ -35,7 +37,12 @@ export class MyPostComponent implements OnInit {
     dialogRef.afterClosed().subscribe(response => {
       if (response) {
         this.postService.deleteByPostId(idPost).subscribe(result => {
-          console.log(result);
+          const idPostSeleted  = this.storageAppService.obtenerValor('idPostSeleccionado');
+          if (idPostSeleted !== null && idPostSeleted !== undefined) {
+            if (idPostSeleted === idPost) {
+                this.storageAppService.eliminarValor('idPostSeleccionado');
+            }
+          }
           // this.postList.filter(p => p.idPost !== idPost);
           this.ngOnInit();
           this.snackBar.open(
@@ -51,9 +58,8 @@ export class MyPostComponent implements OnInit {
   }
 
   editarPost(post: Post) {
-    console.log('editar post');
     // TO DO lanzar a vista de editar post.
-    this.sharedService.selectedPost = post;
+    this.storageAppService.guardarValor('idPostSeleccionado' , post.idPost );
     this.router.navigate(['/postForm']);
 
   }

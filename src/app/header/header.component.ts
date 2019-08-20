@@ -42,6 +42,6 @@ export class HeaderComponent implements OnInit {
     this.sharedService.emitChange('false');
   }
   newPost() {
-    this.sharedService.selectedPost =  new  Post(null, null, null, null, null, null, null, null, null, null);
+    this.storageAppService.eliminarValor('idPostSeleccionado');
   }
 }

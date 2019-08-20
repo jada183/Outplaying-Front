@@ -95,10 +95,15 @@ mat-card {
     border: 1px $secondary-color solid;
 }
 
+// elegir entre secondary color o primary color dark.
 .mat-focused .mat-form-field-label {
-    color: $primary-color-dark!important;
+    color: $secondary-color!important;
 }
 
 .mat-form-field-ripple {
-    background-color: $primary-color-dark!important;
+    background-color: $secondary-color!important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: $secondary-color!important;
 }

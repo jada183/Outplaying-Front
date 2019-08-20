@@ -56,17 +56,31 @@ export class PostFormComponent implements OnInit {
   imgURL = '';
   rootPath = 'http://localhost:8080/file/post-img/';
   ngOnInit() {
-    if (this.sharedService.selectedPost !== undefined) {
-      this.post = this.sharedService.selectedPost;
-      if (
-        this.post.picturesURL !== undefined &&
-        this.post.picturesURL !== null &&
-        this.post.picturesURL !== ''
-      ) {
-        this.imgURL = this.rootPath + this.post.picturesURL;
-      }
+    // if (this.sharedService.selectedPost !== undefined) {
+    //   this.post = this.sharedService.selectedPost;
+    //   if (
+    //     this.post.picturesURL !== undefined &&
+    //     this.post.picturesURL !== null &&
+    //     this.post.picturesURL !== ''
+    //   ) {
+    //     this.imgURL = this.rootPath + this.post.picturesURL;
+    //   }
+    // }
+    // this.postForm.setValue(this.post);
+    const idPostSeleted  = this.storage.obtenerValor('idPostSeleccionado');
+    if (idPostSeleted !== null && idPostSeleted !== undefined) {
+      this.postService.getPostById(idPostSeleted).subscribe(result => {
+        this.post = result;
+        if (
+              this.post.picturesURL !== undefined &&
+              this.post.picturesURL !== null &&
+              this.post.picturesURL !== ''
+            ) {
+              this.imgURL = this.rootPath + this.post.picturesURL;
+            }
+        this.postForm.setValue(this.post);
+      });
     }
-    this.postForm.setValue(this.post);
   }
   onSubmit() {
     this.selectedFile.pending = false;
