@@ -67,6 +67,15 @@ export class LinkerService {
       }
     );
   }
+  getModelWithoutToken(genericRequest: GenericRequest): Observable<Object> {
+    return this.http.get<Object>(
+      this.getEndPointUrl(genericRequest.getService()),
+      {
+        observe: 'body',
+        params: this.getParams(genericRequest.getParams)
+      }
+    );
+  }
   putModel(genericRequest: GenericRequest): Observable<Object> {
     return this.http.put(
       this.getEndPointUrl(genericRequest.getService()),

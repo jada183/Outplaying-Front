@@ -34,7 +34,7 @@ export class PostService {
     const genericRequest = new GenericRequest(
       Object.assign(`post/paginated?page=` + page + `&size=` + size, {})
     );
-    return this.linkerService.getModel(genericRequest);
+    return this.linkerService.getModelWithoutToken(genericRequest);
   }
   createPost(post: any): Observable<any> {
     const genericRequest = new GenericRequest(

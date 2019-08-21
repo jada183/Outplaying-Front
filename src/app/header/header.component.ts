@@ -27,7 +27,11 @@ export class HeaderComponent implements OnInit {
   currentURL: string;
   // declaro el trigger para cerrar el menu cuando se hace scroll
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
-  scroll = (): void => { this.trigger.closeMenu(); };
+  scroll = ( (): void => {
+    if (this.trigger !== undefined) {
+      this.trigger.closeMenu();
+    }
+  });
   ngOnInit() {
     window.addEventListener('scroll', this.scroll, false);
     const currentUrlSpliting = window.location.href.split('/');
