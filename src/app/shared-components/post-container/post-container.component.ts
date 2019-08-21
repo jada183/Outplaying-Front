@@ -18,6 +18,7 @@ export class PostContainerComponent implements OnInit {
     private router: Router,
     private storageAppService: StorageAppService) { }
   @Input() post: Post;
+  @Input() erasable: boolean;
   @Output() deletePost = new EventEmitter();
   rootPath = 'http://localhost:8080/file/post-img/';
   ngOnInit() {

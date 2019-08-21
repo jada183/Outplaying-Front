@@ -14,12 +14,7 @@ import { StorageAppService } from '../services/storage-app.service';
 })
 export class MyPostComponent implements OnInit {
   constructor(
-    private postService: PostService,
-    public dialog: MatDialog,
-    private snackBar: MatSnackBar,
-    private router: Router,
-    private sharedService: SharedService,
-    private storageAppService: StorageAppService
+    private postService: PostService
   ) {}
   // tslint:disable-next-line:max-line-length
   postList: Post[] = [];
@@ -28,7 +23,6 @@ export class MyPostComponent implements OnInit {
       this.postList = result;
     });
   }
-
   eliminarEvento() {
     this.ngOnInit();
   }

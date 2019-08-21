@@ -4,6 +4,6 @@
         No se encuentra ningun post.
     </div>
     <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6 containerCards">
-        <app-post-container [post]="post" (deletePost)="eliminarEvento($event)"></app-post-container>
+        <app-post-container [post]="post" (deletePost)="eliminarEvento($event)" [erasable]="true"></app-post-container>
     </div>
 </div>
