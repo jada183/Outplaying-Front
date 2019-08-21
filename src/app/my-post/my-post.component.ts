@@ -23,44 +23,13 @@ export class MyPostComponent implements OnInit {
   ) {}
   // tslint:disable-next-line:max-line-length
   postList: Post[] = [];
-  rootPath = 'http://localhost:8080/file/post-img/';
   ngOnInit() {
     this.postService.getPostByUserLogin().subscribe(result => {
       this.postList = result;
     });
   }
 
-  eliminarEvento(idPost: number) {
-    const dialogRef = this.dialog.open(ConfirmarComponent, {
-      data: 'eliminarPost'
-    });
-    dialogRef.afterClosed().subscribe(response => {
-      if (response) {
-        this.postService.deleteByPostId(idPost).subscribe(result => {
-          const idPostSeleted  = this.storageAppService.obtenerValor('idPostSeleccionado');
-          if (idPostSeleted !== null && idPostSeleted !== undefined) {
-            if (idPostSeleted === idPost) {
-                this.storageAppService.eliminarValor('idPostSeleccionado');
-            }
-          }
-          // this.postList.filter(p => p.idPost !== idPost);
-          this.ngOnInit();
-          this.snackBar.open(
-            'Se a eliminado el post exitosamente',
-            'aceptar',
-            {
-              duration: 2000
-            }
-          );
-        });
-      }
-    });
-  }
-
-  editarPost(post: Post) {
-    // TO DO lanzar a vista de editar post.
-    this.storageAppService.guardarValor('idPostSeleccionado' , post.idPost );
-    this.router.navigate(['/postForm']);
-
+  eliminarEvento() {
+    this.ngOnInit();
   }
 }
