@@ -1,1 +1,64 @@
+@import "../../stylesVars.scss";
+img {
+    max-height: 320px;
+    border: 1px $primary-color-dark solid;
+}
 
+.contentCards {
+    margin-top: 5%;
+}
+
+mat-card {
+    margin-top: 2%;
+}
+
+mat-card-actions {
+    margin-left: 1% !important;
+}
+
+.containerCards {
+    margin-bottom: 2%;
+}
+
+.pendienteStatusText {
+    color: blue;
+    margin: 0!important;
+}
+
+.denegadoStatusText {
+    color: red;
+}
+
+.crudIcon {
+    color: $primary-color-font !important;
+}
+
+.myPostView {
+    margin-top: 2%;
+}
+
+.crudButton {
+    margin-right: 2%;
+}
+
+.title {
+    text-align: center;
+}
+
+.emptyListMessage {
+    text-align: center;
+    margin-top: 2%;
+}
+
+a {
+    height: inherit;
+}
+
+.paginator {
+    display: inline;
+}
+
+.seletedPageButton {
+    color: $primary-color-dark !important;
+    background-color: $secondary-color !important;
+}

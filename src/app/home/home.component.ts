@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NasaDataService } from '../services/nasa-data.service';
+import { Post } from '../model/post';
+import { PostService } from '../services/localApi/post.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,28 @@ import { NasaDataService } from '../services/nasa-data.service';
 })
 
 export class HomeComponent implements OnInit {
-  constructor() { }
+  constructor( private postService: PostService) { }
+  rootPath = 'http://localhost:8080/file/post-img/';
+  postList: Post[] = [];
+  pageSize = 2;
+  pageNumber = 0;
+  pages =  [];
+  pageSelected = 1;
   ngOnInit() {
+    this.postService.getAllPaginated(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+      this.postList = result.listPost;
+      this.pageNumber = result.numberOfPages;
+      for ( let i = 1; i <= this.pageNumber;  i ++) {
+        this.pages.push(i);
+      }
+      console.log(this.pages);
+    });
   }
-
+  pageChange(n: number) {
+    this.pageSelected = n;
+    this.postService.getAllPaginated(n - 1, this.pageSize).subscribe(result => {
+      this.postList = result.listPost;
+    });
+  }
 }
 

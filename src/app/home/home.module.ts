@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { NasaDataService } from '../services/nasa-data.service';
+import { SharedModule } from '../shared-module/shared.module';
 @NgModule({
-  imports: [CommonModule],
+  imports: [SharedModule],
   declarations: [HomeComponent],
   exports: [HomeComponent]
 })

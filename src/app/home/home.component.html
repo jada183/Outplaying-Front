@@ -1,4 +1,36 @@
-
-<div class="content row">
-
-</div>
+<div class="content myPostView">
+    <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6 containerCards">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>
+                    <h5>{{ post.postName }}</h5>
+                </mat-card-title>
+                <mat-card-subtitle>{{ post.date | date: 'fullDate' }}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <img *ngIf="!post.picturesURL" mat-card-image src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />
+            <img *ngIf="post.picturesURL" mat-card-image [src]="rootPath + post.picturesURL" alt="Photo of a Shiba Inu" />
+            <mat-card-content>
+                <p>
+                    {{ post.contentText }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <div *ngIf="post.status === 'Posteado'" class="row">
+                    <div class="col-md-2 col-lg-2">
+                        <mat-icon class="likeIcon">thumb_up</mat-icon>{{ post.likes }}
+                    </div>
+                    <!--Implementar caja de comentarios-->
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="offset-md-5 offset-lg-5  col-md-2 col-lg-2 paginatorContainer">
+        <div *ngFor="let n of pages" class="paginator">
+            <button mat-fab (click)="pageChange(n)" [ngClass]="{'seletedPageButton': n === pageSelected }">
+                {{n}}
+            </button>
+        </div>
+    </div>
+</div>;
