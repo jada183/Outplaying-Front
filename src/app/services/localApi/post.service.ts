@@ -22,10 +22,10 @@ export class PostService {
     return this.linkerService.getModel(genericRequest);
   }
 
-  getPostByUserLogin(): Observable<any> {
+  getPostByUserLogin(page: Number, size: Number): Observable<any> {
     const idUserOwner = this.storage.obtenerValor('idUser');
     const genericRequest = new GenericRequest(
-      Object.assign(`post/user`, {})
+      Object.assign(`post/user?page=` + page + `&size=` + size, {})
     );
     return this.linkerService.getModel(genericRequest);
   }

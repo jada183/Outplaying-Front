@@ -6,4 +6,11 @@
     <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6 containerCards">
         <app-post-container [post]="post" (deletePost)="eliminarEvento($event)" [erasable]="true"></app-post-container>
     </div>
+    <div class="offset-md-4 offset-lg-4  col-md-4 col-lg-4 paginatorContainer">
+        <div *ngFor="let n of pages" class="paginator">
+            <button mat-fab (click)="pageChange(n)" [ngClass]="{'seletedPageButton': n === pageSelected }">
+              {{n}}
+          </button>
+        </div>
+    </div>
 </div>

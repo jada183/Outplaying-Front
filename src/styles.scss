@@ -107,3 +107,18 @@ mat-card {
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
     color: $secondary-color!important;
 }
+
+// paginadores
+.paginator {
+    display: inline;
+}
+
+.seletedPageButton {
+    color: $primary-color-dark !important;
+    background-color: $secondary-color !important;
+}
+
+.paginatorContainer {
+    margin-bottom: 2%;
+    text-align: center;
+}

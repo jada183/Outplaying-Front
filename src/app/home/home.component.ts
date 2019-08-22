@@ -11,7 +11,7 @@ import { PostService } from '../services/localApi/post.service';
 
 export class HomeComponent implements OnInit {
   constructor( private postService: PostService) { }
-  rootPath = 'http://localhost:8080/file/post-img/';
+
   postList: Post[] = [];
   pageSize = 2;
   pageNumber = 0;
