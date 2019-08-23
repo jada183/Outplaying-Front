@@ -35,7 +35,7 @@ export class MyPostComponent implements OnInit {
   pageChange(n: number) {
     this.pageSelected = n;
     this.postService.getPostByUserLogin(n - 1, this.pageSize).subscribe(result => {
-      console.log(result);
+
       this.postList = result.listPost;
     });
   }
