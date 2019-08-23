@@ -1,7 +1,7 @@
 @import "../../../stylesVars.scss";
 img {
     max-height: 320px;
-    border: 1px $primary-color-dark solid;
+    // border: 1px $primary-color-dark solid;
 }
 
 .contentCards {
@@ -41,6 +41,11 @@ a {
     margin-top: 2%;
 }
 
+span,
+p {
+    color: $primary-color-dark;
+}
+
 .commentsTrigger:hover {
     text-decoration: underline !important;
     cursor: pointer !important;
@@ -49,7 +54,7 @@ a {
 .listCommentsContainer {
     margin: 0px;
     padding: 0px;
-    background-color: $primary-color-light;
+    // background-color: $primary-color-light;
 }
 
 .commentContainer {

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <img *ngIf="imgURL=== ''" src="/assets/img/noProfileImg.png" />
-            <img *ngIf="imgURL" [src]="imgURL" /> {{user.name}} {{user.surname}}
+            <img *ngIf="imgURL" [src]="imgURL" /><span>{{user.name}} {{user.surname}}</span>
         </div>
     </div>
     <div class="row dateInfo">

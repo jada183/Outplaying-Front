@@ -68,6 +68,10 @@ mat-icon {
     color: $primary-color-dark !important;
 }
 
+.full-width {
+    width: 100%;
+}
+
 // ventana de lol
 .lolTab {
     .mat-tab-labels {
@@ -82,7 +86,7 @@ mat-icon {
 
 mat-card {
     border-radius: 0.5em !important;
-    border: 1px solid $primary-color-dark;
+    // border: 1px solid $primary-color-dark;
 }
 
 // inputs filee
@@ -121,8 +125,4 @@ mat-card {
 .paginatorContainer {
     margin-bottom: 2%;
     text-align: center;
-}
-
-.full-width {
-    width: 100%;
 }

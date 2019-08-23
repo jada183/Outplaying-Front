@@ -54,7 +54,7 @@
             <div class="col-md-12 col-lg-12" *ngIf="commentList.length === 0">
                 <span>No se encuentra ningun comentario</span>
             </div>
-            <div class="col-md-12 col-lg-12">
+            <div class="col-md-12 col-lg-12" *ngIf="!erasable">
                 <mat-form-field class="full-width" appearance="outline">
                     <textarea matInput placeholder="Comentar" name="contentText"></textarea>
                 </mat-form-field>
