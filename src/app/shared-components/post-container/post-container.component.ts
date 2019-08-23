@@ -5,6 +5,8 @@ import { PostService } from '../../services/localApi/post.service';
 import { ConfirmarComponent } from '../../dialogs/confirmar/confirmar.component';
 import { StorageAppService } from '../../services/storage-app.service';
 import { Router } from '@angular/router';
+import { CommentService } from '../../services/localApi/comment.service';
+import { Comment } from '../../model/comment';
 @Component({
   selector: 'app-post-container',
   templateUrl: './post-container.component.html',
@@ -16,11 +18,17 @@ export class PostContainerComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
-    private storageAppService: StorageAppService) { }
+    private storageAppService: StorageAppService,
+    private commentService: CommentService) { }
   @Input() post: Post;
   @Input() erasable: boolean;
   @Output() deletePost = new EventEmitter();
+  showComments = false;
   rootPath = 'http://localhost:8080/file/post-img/';
+  commentList = [];
+  // temporal
+  commentPage = 0;
+  commentPageSize = 5;
   ngOnInit() {
   }
   eliminarEvento(idPost: number) {
@@ -55,5 +63,14 @@ export class PostContainerComponent implements OnInit {
     this.storageAppService.guardarValor('idPostSeleccionado' , post.idPost );
     this.router.navigate(['/postForm']);
 
+  }
+
+  showCommentsEvent() {
+    this.showComments  = !this.showComments;
+    if (this.showComments ===  true) {
+      this.commentService.getCommentsByPostId(this.post.idPost, this.commentPage, this.commentPageSize).subscribe(result => {
+        this.commentList  = result.commentList;
+      });
+    }
   }
 }

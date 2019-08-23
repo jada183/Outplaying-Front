@@ -36,3 +36,18 @@ mat-card-actions {
 a {
     height: inherit;
 }
+
+.commentBox {
+    margin-top: 2%;
+}
+
+.commentsTrigger:hover {
+    text-decoration: underline !important;
+    cursor: pointer !important;
+}
+
+.listCommentsContainer {
+    padding: 0!important;
+    margin: 0 !important;
+    border: solid 1px $primary-color-dark;
+}
