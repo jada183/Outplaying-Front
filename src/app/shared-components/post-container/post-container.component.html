@@ -47,11 +47,10 @@
       </span>
         </div>
         <div *ngIf="showComments" class="row listCommentsContainer">
-            <div class="col-md-12 col-lg-12" *ngFor="let c of commentList">
-                <span>hola mundo {{c.contentText}}</span>
-                <span>{{c.date}}</span>
+            <div class="col-md-12 col-lg-12 commentContainer" *ngFor="let c of commentList">
+                <app-comment-container [comment]="c"></app-comment-container>
             </div>
-            <div *ngIf="commentList.length === 0">
+            <div class="col-md-12 col-lg-12" *ngIf="commentList.length === 0">
                 <span>No se encuentra ningun comentario</span>
             </div>
         </div>

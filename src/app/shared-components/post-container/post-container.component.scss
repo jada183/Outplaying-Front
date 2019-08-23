@@ -47,7 +47,11 @@ a {
 }
 
 .listCommentsContainer {
-    padding: 0!important;
-    margin: 0 !important;
-    border: solid 1px $primary-color-dark;
+    margin: 0px;
+    padding: 0px;
+    background-color: $primary-color-light;
+}
+
+.commentContainer {
+    margin-bottom: 1%;
 }

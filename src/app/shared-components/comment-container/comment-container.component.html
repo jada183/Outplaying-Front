@@ -1,3 +1,16 @@
-<p>
-  comment-container works!
-</p>
+<div *ngIf="user !== undefined" class="container">
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <img *ngIf="imgURL=== ''" src="/assets/img/noProfileImg.png" />
+            <img *ngIf="imgURL" [src]="imgURL" /> {{user.name}} {{user.surname}}
+        </div>
+    </div>
+    <div class="row dateInfo">
+        <span class="col-md-12 col-lg-12 commentDate">{{comment.date | date: 'fullDate'}}</span>
+    </div>
+
+    <div class="row commentText">
+        <span class="col-md-12 col-lg-12">{{comment.contentText}}</span>
+    </div>
+</div>

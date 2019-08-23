@@ -15,7 +15,7 @@ export class UserService {
     const genericRequest = new GenericRequest(
       Object.assign(`users/${idUser}`, {})
     );
-    return this.linkerService.getModel(genericRequest);
+    return this.linkerService.getModelWithoutToken(genericRequest);
   }
   updateUser(user: any): Observable<any> {
     const genericRequest = new GenericRequest(
