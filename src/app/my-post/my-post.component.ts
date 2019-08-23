@@ -22,7 +22,9 @@ export class MyPostComponent implements OnInit {
   pages =  [];
   pageSelected = 1;
   ngOnInit() {
+    this.pages =  [];
     this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+      console.log(result);
       this.postList = result.listPost;
       this.pageNumber = result.numberOfPages;
       for ( let i = 1; i <= this.pageNumber;  i ++) {
@@ -32,7 +34,8 @@ export class MyPostComponent implements OnInit {
   }
   pageChange(n: number) {
     this.pageSelected = n;
-    this.postService.getAllPaginated(n - 1, this.pageSize).subscribe(result => {
+    this.postService.getPostByUserLogin(n - 1, this.pageSize).subscribe(result => {
+      console.log(result);
       this.postList = result.listPost;
     });
   }
