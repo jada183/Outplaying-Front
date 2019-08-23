@@ -57,6 +57,9 @@
             <div class="col-md-12 col-lg-12" *ngIf="!erasable">
                 <mat-form-field class="full-width" appearance="outline">
                     <textarea matInput placeholder="Comentar" name="contentText"></textarea>
+                    <button mat-button matSuffix mat-icon-button aria-label="Clear" class="noBackgroudColorButton" (click)="addComment()">
+                        <mat-icon>send</mat-icon>
+                    </button>
                 </mat-form-field>
             </div>
         </div>

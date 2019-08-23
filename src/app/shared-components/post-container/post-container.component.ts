@@ -73,4 +73,9 @@ export class PostContainerComponent implements OnInit {
       });
     }
   }
+
+  addComment() {
+    console.log('envio comentario');
+  }
+
 }
