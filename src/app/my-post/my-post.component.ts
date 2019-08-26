@@ -17,10 +17,15 @@ export class MyPostComponent implements OnInit {
     private postService: PostService
   ) {}
   postList: Post[] = [];
-  pageSize = 2;
+  pageSize = 4;
   pageNumber = 0;
   pages =  [];
   pageSelected = 1;
+
+  // infity scroll
+  throttle = 300;
+  scrollDistance = 10;
+  scrollUpDistance = 2;
   ngOnInit() {
     this.pages =  [];
     this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
@@ -42,5 +47,17 @@ export class MyPostComponent implements OnInit {
   eliminarEvento() {
     // el container de post emite un evento al eliminar un post para refrescar la pantalla.
     this.ngOnInit();
+  }
+  onScrollDown () {
+    this.pageSelected++;
+    this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+      result.listPost.map(p => {
+        this.postList.push(p);
+      });
+    });
+
+  }
+  onUp(ev) {
+    console.log('scrolled up!', ev);
   }
 }

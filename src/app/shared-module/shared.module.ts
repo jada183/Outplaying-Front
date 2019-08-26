@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 @NgModule({
   imports: [CommonModule,
     FormsModule,
@@ -29,7 +31,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatDialogModule,
     MatExpansionModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    InfiniteScrollModule
   ],
   declarations: [],
   exports: [HttpClientModule, HttpClientModule, StorageServiceModule,
@@ -46,7 +49,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatDialogModule,
     MatExpansionModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    InfiniteScrollModule
   ]
 })
 export class SharedModule {}
