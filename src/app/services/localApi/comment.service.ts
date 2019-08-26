@@ -34,6 +34,6 @@ export class CommentService {
       null,
       comment
     );
-    return this.linkerService.postModelAuthentication(genericRequest);
+    return this.linkerService.postModel(genericRequest);
   }
 }

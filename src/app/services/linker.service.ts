@@ -47,10 +47,7 @@ export class LinkerService {
       this.getEndPointUrl(genericRequest.getService()),
       genericRequest.getData(),
       {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.getToken()
-        }),
-        observe: 'body',
+        observe: 'response',
         params: this.getParams(genericRequest.getParams())
       }
     );

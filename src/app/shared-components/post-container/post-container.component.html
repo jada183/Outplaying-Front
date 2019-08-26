@@ -5,10 +5,10 @@
             <h4>{{ post.postName }}</h4>
         </mat-card-title>
         <mat-card-subtitle>
-            <div class="row">
+            <div class="row" *ngIf="!erasable">
                 <div class="col-md-12 col-lg-12">
                     <img class="profileImg" *ngIf="imgURL=== ''" src="/assets/img/noProfileImg.png" />
-                    <img class="profileImg" *ngIf="imgURL" [src]="imgURL" /><span>{{user.name}} {{user.surname}}</span>
+                    <img class="profileImg" *ngIf="imgURL" [src]="imgURL" /><span *ngIf="user !== undefined">{{user.name}} {{user.surname}}</span>
                 </div>
             </div>
             {{ post.date | date: 'fullDate' }}
