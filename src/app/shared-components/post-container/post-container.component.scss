@@ -4,6 +4,13 @@ img {
     // border: 1px $primary-color-dark solid;
 }
 
+.profileImg {
+    width: 20px;
+    height: 20px;
+    vertical-align: center;
+    margin-right: 1%;
+}
+
 .contentCards {
     margin-top: 5%;
 }
@@ -67,4 +74,8 @@ p {
 
 .comentarButton {
     color: $primary-color-dark !important;
+}
+
+mat-card-subtitle {
+    margin-top: 5% !important;
 }

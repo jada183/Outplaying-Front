@@ -2,9 +2,16 @@
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>
-            <h5>{{ post.postName }}</h5>
+            <h4>{{ post.postName }}</h4>
         </mat-card-title>
-        <mat-card-subtitle>{{ post.date | date: 'fullDate' }}
+        <mat-card-subtitle>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <img class="profileImg" *ngIf="imgURL=== ''" src="/assets/img/noProfileImg.png" />
+                    <img class="profileImg" *ngIf="imgURL" [src]="imgURL" /><span>{{user.name}} {{user.surname}}</span>
+                </div>
+            </div>
+            {{ post.date | date: 'fullDate' }}
         </mat-card-subtitle>
     </mat-card-header>
     <img *ngIf="!post.picturesURL" mat-card-image src="/assets/img/no-image-box.png" alt="Photo of a Shiba Inu" />

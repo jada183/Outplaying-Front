@@ -7,6 +7,8 @@ import { StorageAppService } from '../../services/storage-app.service';
 import { Router } from '@angular/router';
 import { CommentService } from '../../services/localApi/comment.service';
 import { Comment } from '../../model/comment';
+import { UserService } from '../../services/localApi/user.service';
+import { User } from '../../model/user';
 @Component({
   selector: 'app-post-container',
   templateUrl: './post-container.component.html',
@@ -19,7 +21,8 @@ export class PostContainerComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private storageAppService: StorageAppService,
-    private commentService: CommentService) { }
+    private commentService: CommentService,
+    private userService: UserService) { }
   @Input() post: Post;
   @Input() erasable: boolean;
   @Output() deletePost = new EventEmitter();
@@ -30,7 +33,16 @@ export class PostContainerComponent implements OnInit {
   commentPage = 0;
   commentPageSize = 5;
   commentTextBoxContent = '';
+  user: User;
+  rootPathProfleImg = 'http://localhost:8080/file/profile-img/';
+  imgURL = '';
   ngOnInit() {
+    this.userService.getUserById(this.post.idUser).subscribe(result => {
+      this.user = result;
+      if (result.urlImg !== undefined && result.urlImg !== null) {
+        this.imgURL = this.rootPathProfleImg + result.urlImg;
+      }
+    });
   }
   eliminarEvento(idPost: number) {
     const dialogRef = this.dialog.open(ConfirmarComponent, {
