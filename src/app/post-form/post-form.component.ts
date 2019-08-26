@@ -86,7 +86,8 @@ export class PostFormComponent implements OnInit {
     this.selectedFile.pending = false;
     this.selectedFile.status = 'fail';
     this.selectedFile.src = '';
-    if (this.postForm.get('idPost').value !== null) {
+    this.postForm.get('status').setValue('Pendiente');
+    if (this.postForm.get('idPost').value !== null && this.postForm.get('idPost').value !== '') {
       const dialogRef = this.dialog.open(ConfirmarComponent, {
         data: 'actualizarPost'
       });
