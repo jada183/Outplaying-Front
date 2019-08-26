@@ -29,6 +29,7 @@ export class PostContainerComponent implements OnInit {
   // temporal
   commentPage = 0;
   commentPageSize = 5;
+  commentTextBoxContent = '';
   ngOnInit() {
   }
   eliminarEvento(idPost: number) {
@@ -75,7 +76,14 @@ export class PostContainerComponent implements OnInit {
   }
 
   addComment() {
-    console.log('envio comentario');
+    const comment = new Comment;
+    comment.idPost = this.post.idPost;
+    comment.contentText = this.commentTextBoxContent;
+    console.log(comment.contentText);
+    this.commentTextBoxContent = '';
+    this.commentService.saveComment(comment).subscribe(result => {
+        this.commentList.push(result);
+    });
   }
 
 }

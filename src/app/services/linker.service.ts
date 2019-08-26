@@ -48,9 +48,9 @@ export class LinkerService {
       genericRequest.getData(),
       {
         headers: new HttpHeaders({
-          Authorization: `${this.token}`
+          Authorization: 'Bearer ' + this.getToken()
         }),
-        observe: 'response',
+        observe: 'body',
         params: this.getParams(genericRequest.getParams())
       }
     );
