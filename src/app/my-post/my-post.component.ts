@@ -29,7 +29,7 @@ export class MyPostComponent implements OnInit {
   scrollCount = 0;
   ngOnInit() {
     this.pages =  [];
-    this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+    this.postService.getPostByUserLogin(0 , 4).subscribe(result => {
       console.log(result);
       this.postList = result.listPost;
       this.pageNumber = result.numberOfPages;
@@ -51,7 +51,7 @@ export class MyPostComponent implements OnInit {
   }
   onScrollDown () {
     this.scrollCount++;
-    // if (this.scrollCount > 10 ) {
+    if (this.scrollCount >= 2 ) {
       this.scrollCount = 0;
       console.log('add value to list');
       this.pageSelected++;
@@ -60,7 +60,7 @@ export class MyPostComponent implements OnInit {
           this.postList.push(p);
         });
       });
-    // }
+    }
 
   }
   onUp(ev) {

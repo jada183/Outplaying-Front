@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
 
   onScrollDown () {
     this.scrollCount++;
-    console.log('scroll down' + this.scrollCount);
     if (this.scrollCount >= 2 ) {
       this.scrollCount = 0;
       console.log('add value to list');
