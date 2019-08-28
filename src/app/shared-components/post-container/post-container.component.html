@@ -55,18 +55,22 @@
       </span>
         </div>
         <div *ngIf="showComments" class="row listCommentsContainer">
-            <div class="col-md-12 col-lg-12 commentContainer" *ngFor="let c of commentList">
+            <div class="col-md-12 col-lg-12 commentContainer" *ngFor="let c of commentList" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown(event)"
+                (scrolledUp)="onUp()">
                 <app-comment-container [comment]="c"></app-comment-container>
             </div>
             <div class="col-md-12 col-lg-12" *ngIf="commentList.length === 0">
                 <span>No se encuentra ningun comentario</span>
             </div>
+
+        </div>
+        <div *ngIf="showComments" class="row listCommentsContainer">
             <div class="col-md-12 col-lg-12" *ngIf="!erasable">
                 <mat-form-field class="full-width" appearance="outline">
                     <textarea matInput placeholder="Comentar" name="contentText" [(ngModel)]="commentTextBoxContent"></textarea>
                     <button mat-button matSuffix mat-icon-button aria-label="Clear" class="noBackgroudColorButton" (click)="addComment()">
-                        <mat-icon>send</mat-icon>
-                    </button>
+                    <mat-icon>send</mat-icon>
+                </button>
                 </mat-form-field>
             </div>
         </div>

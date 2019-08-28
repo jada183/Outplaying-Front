@@ -36,6 +36,12 @@ export class PostContainerComponent implements OnInit {
   user: User;
   rootPathProfleImg = 'http://localhost:8080/file/profile-img/';
   imgURL = '';
+   // infity scroll
+   throttle = 300;
+   scrollDistance = 1;
+   scrollUpDistance = 2;
+   scrollCount = 0;
+   pageSelected = 1;
   ngOnInit() {
     this.userService.getUserById(this.post.idUser).subscribe(result => {
       this.user = result;
@@ -96,6 +102,24 @@ export class PostContainerComponent implements OnInit {
     this.commentService.saveComment(comment).subscribe(result => {
         this.commentList.push(result);
     });
+  }
+  onScrollDown () {
+    this.scrollCount++;
+    console.log('scroll comment box');
+    // if (this.scrollCount >= 2 ) {
+    //   this.scrollCount = 0;
+    //   console.log('add value to list');
+    //   this.pageSelected++;
+    //   this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+    //     result.listPost.map(p => {
+    //       this.postList.push(p);
+    //     });
+    //   });
+    // }
+
+  }
+  onUp(ev) {
+    console.log('scrolled up!', ev);
   }
 
 }

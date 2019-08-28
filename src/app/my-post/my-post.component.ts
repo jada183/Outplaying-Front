@@ -53,7 +53,6 @@ export class MyPostComponent implements OnInit {
     this.scrollCount++;
     if (this.scrollCount >= 2 ) {
       this.scrollCount = 0;
-      console.log('add value to list');
       this.pageSelected++;
       this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
         result.listPost.map(p => {
