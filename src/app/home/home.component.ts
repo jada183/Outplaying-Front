@@ -17,8 +17,14 @@ export class HomeComponent implements OnInit {
   pageNumber = 0;
   pages =  [];
   pageSelected = 1;
+
+   // infity scroll
+   throttle = 300;
+   scrollDistance = 1;
+   scrollUpDistance = 2;
+   scrollCount = 0;
   ngOnInit() {
-    this.postService.getAllPaginated(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+    this.postService.getAllPaginated(0 , 4).subscribe(result => {
       this.postList = result.listPost;
       this.pageNumber = result.numberOfPages;
       for ( let i = 1; i <= this.pageNumber;  i ++) {
@@ -31,6 +37,24 @@ export class HomeComponent implements OnInit {
     this.postService.getAllPaginated(n - 1, this.pageSize).subscribe(result => {
       this.postList = result.listPost;
     });
+  }
+
+  onScrollDown () {
+    this.scrollCount++;
+    console.log('scroll down' + this.scrollCount);
+    if (this.scrollCount >= 2 ) {
+      this.scrollCount = 0;
+      console.log('add value to list');
+      this.pageSelected++;
+      this.postService.getAllPaginated(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+        result.listPost.map(p => {
+          this.postList.push(p);
+        });
+      });
+    }
+  }
+  onUp(ev) {
+    console.log('scrolled up!', ev);
   }
 }
 

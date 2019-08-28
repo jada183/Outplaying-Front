@@ -17,15 +17,16 @@ export class MyPostComponent implements OnInit {
     private postService: PostService
   ) {}
   postList: Post[] = [];
-  pageSize = 4;
+  pageSize = 2;
   pageNumber = 0;
   pages =  [];
   pageSelected = 1;
 
   // infity scroll
   throttle = 300;
-  scrollDistance = 10;
+  scrollDistance = 1;
   scrollUpDistance = 2;
+  scrollCount = 0;
   ngOnInit() {
     this.pages =  [];
     this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
@@ -49,12 +50,17 @@ export class MyPostComponent implements OnInit {
     this.ngOnInit();
   }
   onScrollDown () {
-    this.pageSelected++;
-    this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
-      result.listPost.map(p => {
-        this.postList.push(p);
+    this.scrollCount++;
+    // if (this.scrollCount > 10 ) {
+      this.scrollCount = 0;
+      console.log('add value to list');
+      this.pageSelected++;
+      this.postService.getPostByUserLogin(this.pageSelected - 1 , this.pageSize).subscribe(result => {
+        result.listPost.map(p => {
+          this.postList.push(p);
+        });
       });
-    });
+    // }
 
   }
   onUp(ev) {

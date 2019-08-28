@@ -1,18 +1,11 @@
-<div class="content myPostView" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown(event)" (scrolledUp)="onUp()">
+<div class="content myPostView">
     <h4 class="offset-lg-5 col-lg-2 offset-md-5 col-md-2 offset-sm-5 col-sm-2 title">
         Lista de publicaciones
     </h4>
     <div *ngIf="postList.length === 0" class="offset-lg-5 col-lg-2 offset-md-5 col-md-2 offset-sm-5 col-sm-2 emptyListMessage">
         No se encuentra ningun post.
     </div>
-    <div *ngFor="let post of postList" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6 containerCards">
+    <div *ngFor="let post of postList" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown(event)" (scrolledUp)="onUp()" class=" offset-md-3 offset-lg-3  col-md-6 col-lg-6 containerCards">
         <app-post-container [post]="post" (deletePost)="eliminarEvento($event)" [erasable]="true"></app-post-container>
     </div>
-    <!-- <div class="offset-md-4 offset-lg-4  col-md-4 col-lg-4 paginatorContainer">
-        <div *ngFor="let n of pages" class="paginator">
-            <button mat-fab (click)="pageChange(n)" [ngClass]="{ seletedPageButton: n === pageSelected }">
-        {{ n }}
-      </button>
-        </div>
-    </div> -->
 </div>
