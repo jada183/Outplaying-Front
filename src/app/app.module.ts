@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { APP_ROUTING } from './app.routes';
+// import { APP_ROUTING } from './app.routes';
 
 import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +16,7 @@ import { MyPostModule } from './my-post/my-post.module';
 import { PostFormModule } from './post-form/post-form.module';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
-
+import { AppRoutingModule } from './app-routing.module';
 registerLocaleData(localeEs, 'es');
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -25,17 +25,11 @@ export function tokenGetter() {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    LoginModule,
-    APP_ROUTING,
+    // APP_ROUTING,
     BrowserAnimationsModule,
     HeaderModule,
-    NewsModule,
-    HomeModule,
-    InfoAccountLolModule,
-    ProfileModule,
     SharedModule,
-    MyPostModule,
-    PostFormModule,
+    AppRoutingModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter
