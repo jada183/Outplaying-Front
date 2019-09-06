@@ -22,7 +22,10 @@ export class PostContainerComponent implements OnInit {
     private router: Router,
     private storageAppService: StorageAppService,
     private commentService: CommentService,
-    private userService: UserService) { }
+    private userService: UserService) {
+      this.token = this.storageAppService.obtenerValor('token');
+      console.log(this.token);
+    }
   @Input() post: Post;
   @Input() erasable: boolean;
   @Output() deletePost = new EventEmitter();
@@ -32,6 +35,8 @@ export class PostContainerComponent implements OnInit {
   // temporal
   commentPage = 0;
   commentPageSize = 5;
+  token = '';
+
   commentTextBoxContent = '';
   user: User;
   rootPathProfleImg = 'http://localhost:8080/file/profile-img/';

@@ -65,12 +65,17 @@
 
         </div>
         <div *ngIf="showComments" class="row listCommentsContainer">
-            <div class="col-md-12 col-lg-12" *ngIf="!erasable">
+            <div class="col-md-12 col-lg-12" *ngIf="!erasable && token != undefined">
                 <mat-form-field class="full-width" appearance="outline">
                     <textarea matInput placeholder="Comentar" name="contentText" [(ngModel)]="commentTextBoxContent"></textarea>
                     <button mat-button matSuffix mat-icon-button aria-label="Clear" class="noBackgroudColorButton" (click)="addComment()">
                     <mat-icon>send</mat-icon>
                 </button>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12 col-lg-12" *ngIf=" token == undefined">
+                <mat-form-field class="full-width" appearance="outline">
+                    <textarea matInput placeholder="Para comentar logueate" name="contentText" [(ngModel)]="commentTextBoxContent" disabled></textarea>
                 </mat-form-field>
             </div>
         </div>
