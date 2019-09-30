@@ -9,8 +9,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
     SharedModule,
     ProfileRoutingModule
   ],
-  declarations: [ProfileComponent, ConfirmarComponent],
-  exports: [ProfileComponent],
-  entryComponents: [ ConfirmarComponent ]
+  declarations: [ProfileComponent],
+  exports: [ProfileComponent]
 })
 export class ProfileModule {}

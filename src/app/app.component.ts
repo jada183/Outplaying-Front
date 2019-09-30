@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
     this.logIn = this.app.isAuthenticated();
   }
   logInSuccess(log: string) {
-    console.log('login success:' + log);
     this.logIn = true;
   }
 }

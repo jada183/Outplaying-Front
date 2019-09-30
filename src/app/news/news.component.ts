@@ -14,7 +14,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this._nasaDataService.apod().subscribe(data => {
-      console.log(data);
      this.apod = data;
     });
   }

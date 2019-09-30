@@ -17,12 +17,13 @@ import { PostFormModule } from './post-form/post-form.module';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
+import { ConfirmarComponent } from './dialogs/confirmar/confirmar.component';
 registerLocaleData(localeEs, 'es');
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ConfirmarComponent],
   imports: [
     BrowserModule,
     // APP_ROUTING,
@@ -37,6 +38,7 @@ export function tokenGetter() {
     })
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ ConfirmarComponent ]
 })
 export class AppModule {}

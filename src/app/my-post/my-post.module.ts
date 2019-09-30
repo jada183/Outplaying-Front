@@ -4,6 +4,7 @@ import { SharedModule } from '../shared-module/shared.module';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MyPostRoutingModule } from './my-post-routing.module';
+
 @NgModule({
   imports: [ SharedModule, SharedComponentsModule, InfiniteScrollModule, MyPostRoutingModule ],
   declarations: [MyPostComponent],

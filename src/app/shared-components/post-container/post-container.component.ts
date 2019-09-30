@@ -24,7 +24,6 @@ export class PostContainerComponent implements OnInit {
     private commentService: CommentService,
     private userService: UserService) {
       this.token = this.storageAppService.obtenerValor('token');
-      console.log(this.token);
     }
   @Input() post: Post;
   @Input() erasable: boolean;
@@ -102,7 +101,6 @@ export class PostContainerComponent implements OnInit {
     const comment = new Comment;
     comment.idPost = this.post.idPost;
     comment.contentText = this.commentTextBoxContent;
-    console.log(comment.contentText);
     this.commentTextBoxContent = '';
     this.commentService.saveComment(comment).subscribe(result => {
         this.commentList.push(result);
@@ -124,7 +122,6 @@ export class PostContainerComponent implements OnInit {
 
   }
   onUp(ev) {
-    console.log('scrolled up!', ev);
   }
 
 }

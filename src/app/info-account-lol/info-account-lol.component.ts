@@ -16,7 +16,6 @@ export class InfoAccountLolComponent implements OnInit {
     this.matches = new Array<Match>();
   }
   searchDataAccount() {
-    console.log('clico en buscar');
   }
   clearValue() {
     this.acountName = '';

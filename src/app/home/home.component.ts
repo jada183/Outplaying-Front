@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
     }
   }
   onUp(ev) {
-    console.log('scrolled up!', ev);
   }
 }
 
