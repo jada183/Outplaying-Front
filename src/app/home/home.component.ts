@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   pageSize = 2;
   pageNumber = 0;
   pages =  [];
-  pageSelected = 1;
+  pageSelected = 2;
 
    // infity scroll
    throttle = 300;
