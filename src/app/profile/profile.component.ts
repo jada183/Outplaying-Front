@@ -88,9 +88,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmitNewPassword() {
-    console.log(
-      'las password:' + this.updatePasswordForm.get('lastPassword').value
-    );
     const dialogRef = this.dialog.open(ConfirmarComponent, {
       data: 'actualizarContraseña'
     });
@@ -114,7 +111,6 @@ export class ProfileComponent implements OnInit {
             },
             (error: HttpErrorResponse) => {
               // to change
-              console.log(error.error.message);
               this.snackBar.open(error.error.message, 'aceptar', {
                 duration: 2500
               });
